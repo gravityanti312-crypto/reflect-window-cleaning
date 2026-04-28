@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brian's Pool Care | Ahwatukee &amp; Phoenix Pool Maintenance</title>
+  <meta name="description" content="Ahwatukee's trusted pool cleaning experts. Weekly maintenance, green pool cleanup, chemical balancing &amp; repairs. Call Brian: 480-907-7959." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-deep:   #0C4A7A;
+      --blue-mid:    #1A6FBF;
+      --blue-bright: #0EA5E9;
+      --aqua:        #22D3EE;
+      --aqua-light:  #E0F7FF;
+      --slate:       #0F172A;
+      --slate-mid:   #334155;
+      --slate-light: #64748B;
+      --white:       #FFFFFF;
+      --off-white:   #F0F9FF;
+      --border:      #E2F0FB;
+      --shadow:      rgba(10, 60, 120, 0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--slate);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-img {
+      width: 42px; height: 42px; object-fit: contain;
+    }
+    .nav-logo-text { line-height: 1.2; }
+    .nav-logo-text strong {
+      display: block; font-size: 1rem; color: var(--blue-deep); font-weight: 800;
+    }
+    .nav-logo-text span {
+      display: block; font-size: 0.7rem; color: var(--slate-light); text-transform: uppercase; letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--slate-mid);
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue-mid); }
+
+    .nav-cta {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .btn-call {
+      display: flex; align-items: center; gap: 6px;
+      text-decoration: none; color: var(--blue-mid);
+      font-weight: 700; font-size: 0.9rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-bright));
+      color: white; border: none; padding: 0.6rem 1.4rem;
+      border-radius: 50px; font-weight: 700; font-size: 0.9rem;
+      cursor: pointer; text-decoration: none;
+      box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--slate); border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .btn-call { display: none; }
+    }
+
+    /* ─── MOBILE MENU ────────────────────────────────────────────────── */
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 999;
+      background: white; border-bottom: 1px solid var(--border);
+      padding: 1.5rem;
+      flex-direction: column; gap: 1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; color: var(--slate-mid);
+      font-weight: 600; padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu .btn-primary { text-align: center; margin-top: 0.5rem; }
+
+    /* ─── HERO ───────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      padding-top: 68px;
+      background:
+        linear-gradient(160deg, rgba(8,40,80,0.88) 0%, rgba(12,74,122,0.78) 45%, rgba(6,100,140,0.65) 100%),
+        url('https://images.pexels.com/photos/6437583/pexels-photo-6437583.jpeg?auto=compress&cs=tinysrgb&w=1800&h=900&fit=crop') center/cover no-repeat;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+      background: linear-gradient(to top right, white 50%, transparent 50%);
+    }
+
+    .hero-ripple {
+      position: absolute; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.1);
+      animation: ripple 6s linear infinite;
+    }
+    .hero-ripple:nth-child(1) { width: 300px; height: 300px; top: 10%; right: -50px; animation-delay: 0s; }
+    .hero-ripple:nth-child(2) { width: 500px; height: 500px; top: -5%; right: -150px; animation-delay: 2s; }
+    .hero-ripple:nth-child(3) { width: 700px; height: 700px; top: -20%; right: -250px; animation-delay: 4s; }
+
+    @keyframes ripple {
+      0% { transform: scale(1); opacity: 0.4; }
+      50% { opacity: 0.15; }
+      100% { transform: scale(1.1); opacity: 0.4; }
+    }
+
+    .hero-content {
+      max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem 8rem;
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white; padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: '⭐'; }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900; color: white;
+      line-height: 1.1; margin-bottom: 1.2rem;
+    }
+    .hero h1 span { color: var(--aqua); }
+
+    .hero p {
+      font-size: 1.1rem; color: rgba(255,255,255,0.85);
+      margin-bottom: 2rem; max-width: 500px;
+    }
+
+    .hero-buttons {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+    }
+    .btn-hero-primary {
+      background: white; color: var(--blue-deep);
+      padding: 1rem 2rem; border-radius: 50px;
+      font-weight: 800; font-size: 1rem; text-decoration: none;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .btn-hero-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+    .btn-hero-secondary {
+      background: rgba(255,255,255,0.15); color: white;
+      border: 2px solid rgba(255,255,255,0.4);
+      padding: 1rem 2rem; border-radius: 50px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s, border-color 0.2s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .btn-hero-secondary:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 24px; padding: 2rem;
+      color: white;
+    }
+    .hero-card-title {
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--aqua); font-weight: 700; margin-bottom: 1rem;
+    }
+    .hero-stat-row {
+      display: flex; gap: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      display: block; font-size: 2rem; font-weight: 900; color: white;
+    }
+    .hero-stat-label {
+      display: block; font-size: 0.75rem; color: rgba(255,255,255,0.7);
+    }
+    .hero-review {
+      background: rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 1rem;
+      margin-top: 0.5rem;
+    }
+    .hero-review-stars { color: #FFC107; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .hero-review-text { font-size: 0.85rem; color: rgba(255,255,255,0.9); font-style: italic; margin-bottom: 0.5rem; }
+    .hero-review-author { font-size: 0.75rem; color: rgba(255,255,255,0.6); font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-card { max-width: 400px; }
+    }
+
+    /* ─── TRUST BAR ──────────────────────────────────────────────────── */
+    .trust-bar {
+      background: var(--off-white); padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .trust-bar-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 2rem 3rem; align-items: center;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.9rem; font-weight: 600; color: var(--slate-mid);
+    }
+    .trust-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-bright));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1rem; flex-shrink: 0;
+    }
+
+    /* ─── SECTION LAYOUT ─────────────────────────────────────────────── */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-block;
+      color: var(--blue-bright); font-weight: 700; font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 900; color: var(--slate);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--blue-mid); }
+    .section-sub {
+      color: var(--slate-light); font-size: 1rem;
+      max-width: 560px; line-height: 1.7;
+    }
+    .section-header { margin-bottom: 3rem; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+
+    /* ─── SERVICES ───────────────────────────────────────────────────── */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 1.75rem;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      background: white;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue-mid), var(--aqua));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--blue-bright);
+      box-shadow: 0 8px 32px var(--shadow);
+      transform: translateY(-3px);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--aqua-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1rem;
+    }
+    .service-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .service-card p { font-size: 0.9rem; color: var(--slate-light); line-height: 1.6; }
+
+    /* ─── PRICING ────────────────────────────────────────────────────── */
+    #pricing { background: var(--off-white); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; align-items: start;
+    }
+    .pricing-card {
+      background: white; border: 2px solid var(--border);
+      border-radius: 24px; padding: 2.25rem;
+      position: relative; overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px var(--shadow);
+    }
+    .pricing-card.featured {
+      border-color: var(--blue-bright);
+      box-shadow: 0 8px 40px rgba(14,165,233,0.18);
+    }
+    .pricing-card.featured::before {
+      content: 'Most Popular';
+      position: absolute; top: 0; right: 0;
+      background: linear-gradient(135deg, var(--blue-mid), var(--aqua));
+      color: white; font-size: 0.72rem; font-weight: 800;
+      padding: 0.4rem 1.2rem;
+      border-bottom-left-radius: 14px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .pricing-plan {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--blue-bright); margin-bottom: 0.5rem;
+    }
+    .pricing-name {
+      font-size: 1.4rem; font-weight: 900; color: var(--slate);
+      margin-bottom: 0.25rem;
+    }
+    .pricing-desc {
+      font-size: 0.85rem; color: var(--slate-light); margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .pricing-price {
+      display: flex; align-items: flex-end; gap: 4px; margin-bottom: 1.75rem;
+    }
+    .pricing-price .amount {
+      font-size: 3rem; font-weight: 900; color: var(--slate); line-height: 1;
+    }
+    .pricing-price .per {
+      font-size: 0.9rem; color: var(--slate-light); padding-bottom: 6px;
+    }
+    .pricing-features { list-style: none; margin-bottom: 2rem; }
+    .pricing-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+      font-size: 0.875rem; color: var(--slate-mid);
+    }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features li::before {
+      content: '✓'; flex-shrink: 0;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-mid), var(--aqua));
+      color: white; font-size: 0.65rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .pricing-cta {
+      display: block; width: 100%; text-align: center;
+      padding: 0.9rem; border-radius: 12px;
+      font-weight: 800; font-size: 0.95rem; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pricing-cta.primary {
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-bright));
+      color: white;
+      box-shadow: 0 6px 20px rgba(14,165,233,0.3);
+    }
+    .pricing-cta.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(14,165,233,0.4);
+    }
+    .pricing-cta.outline {
+      border: 2px solid var(--blue-bright); color: var(--blue-mid);
+    }
+    .pricing-cta.outline:hover { background: var(--aqua-light); }
+
+    .pricing-note {
+      text-align: center; margin-top: 2rem;
+      font-size: 0.85rem; color: var(--slate-light);
+    }
+    .pricing-note strong { color: var(--blue-mid); }
+
+    /* ─── HOW IT WORKS ───────────────────────────────────────────────── */
+    #how-it-works { background: var(--white); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem; position: relative;
+    }
+    .step {
+      text-align: center; padding: 2rem 1rem;
+    }
+    .step-number {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-mid), var(--aqua));
+      color: white; font-size: 1.4rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 6px 20px rgba(14,165,233,0.3);
+    }
+    .step h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.9rem; color: var(--slate-light); }
+
+    /* ─── ABOUT ──────────────────────────────────────────────────────── */
+    #about { background: var(--off-white); }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .about-visual {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-bright) 100%);
+      border-radius: 24px; padding: 3rem 2.5rem;
+      color: white; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .about-visual::before {
+      content: '';
+      position: absolute; bottom: -40px; right: -40px;
+      width: 200px; height: 200px; border-radius: 50%;
+      border: 40px solid rgba(255,255,255,0.08);
+    }
+    .owner-avatar {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; border: 3px solid rgba(255,255,255,0.3);
+    }
+    .owner-name { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.25rem; }
+    .owner-title { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 1.5rem; }
+    .cert-badges {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+    }
+    .cert-badge {
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.3rem 0.75rem; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+
+    .about-text p {
+      color: var(--slate-light); margin-bottom: 1rem; line-height: 1.8;
+    }
+    .about-features { margin-top: 1.5rem; }
+    .about-feature {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+    }
+    .about-feature:last-child { border-bottom: none; }
+    .feature-check {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-mid), var(--aqua));
+      color: white; font-size: 0.7rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .about-feature strong { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 2px; }
+    .about-feature span { font-size: 0.85rem; color: var(--slate-light); }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── REVIEWS ────────────────────────────────────────────────────── */
+    #reviews { background: var(--white); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem; margin-bottom: 2rem;
+    }
+    .review-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 18px; padding: 1.5rem;
+      transition: box-shadow 0.2s;
+    }
+    .review-card:hover { box-shadow: 0 6px 24px var(--shadow); }
+    .review-stars { color: #F59E0B; font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .review-text {
+      font-size: 0.9rem; color: var(--slate-mid);
+      line-height: 1.65; font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .review-author {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .review-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-mid), var(--aqua));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 800; font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .review-author-name { font-weight: 700; font-size: 0.85rem; }
+    .review-author-meta { font-size: 0.75rem; color: var(--slate-light); }
+
+    .review-cta {
+      text-align: center; padding: 2rem;
+      background: var(--off-white); border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+    .review-cta p { color: var(--slate-light); margin-bottom: 1rem; font-size: 0.9rem; }
+
+    /* ─── SERVICE AREA ───────────────────────────────────────────────── */
+    #service-area { background: var(--off-white); }
+
+    .area-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.75rem; margin-top: 2rem;
+    }
+    .area-chip {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.6rem 1rem;
+      font-size: 0.85rem; font-weight: 600; color: var(--slate-mid);
+      text-align: center;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .area-chip:hover {
+      background: var(--aqua-light); border-color: var(--blue-bright); color: var(--blue-deep);
+    }
+
+    .area-callout {
+      margin-top: 2.5rem;
+      background: linear-gradient(135deg, var(--blue-deep), var(--blue-mid));
+      border-radius: 20px; padding: 2rem;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 1rem; color: white;
+    }
+    .area-callout h3 { font-size: 1.2rem; font-weight: 800; }
+    .area-callout p { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 0.25rem; }
+    .btn-white {
+      background: white; color: var(--blue-deep);
+      padding: 0.75rem 1.75rem; border-radius: 50px;
+      font-weight: 800; font-size: 0.9rem;
+      text-decoration: none; white-space: nowrap;
+      transition: transform 0.2s;
+    }
+    .btn-white:hover { transform: scale(1.03); }
+
+    /* ─── CONTACT ────────────────────────────────────────────────────── */
+    #contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: start;
+    }
+    .contact-card {
+      background: var(--off-white); border: 1px solid var(--border);
+      border-radius: 18px; padding: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .contact-card-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--aqua-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .contact-card h4 { font-size: 0.8rem; color: var(--slate-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+    .contact-card a { text-decoration: none; color: var(--blue-mid); font-weight: 700; font-size: 1rem; }
+    .contact-card p { color: var(--slate-mid); font-size: 0.9rem; }
+
+    .contact-form {
+      background: var(--off-white); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .contact-form h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 1.5rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; font-size: 0.8rem; font-weight: 700;
+      color: var(--slate-mid); margin-bottom: 0.4rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 0.95rem; color: var(--slate);
+      background: white;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue-bright);
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-bright));
+      color: white; border: none; padding: 1rem;
+      border-radius: 12px; font-size: 1rem; font-weight: 800;
+      cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 20px rgba(14,165,233,0.3);
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(14,165,233,0.4);
+    }
+
+    .form-disclaimer {
+      text-align: center; margin-top: 0.75rem;
+      font-size: 0.75rem; color: var(--slate-light);
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────────── */
+    footer {
+      background: var(--slate); color: rgba(255,255,255,0.7);
+      padding: 3rem 1.5rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem; margin-bottom: 2.5rem;
+    }
+    .footer-logo {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 1rem;
+    }
+    .footer-logo-img {
+      width: 36px; height: 36px; object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+    .footer-logo strong { color: white; font-size: 1rem; }
+    .footer-brand p {
+      font-size: 0.85rem; line-height: 1.7; max-width: 260px;
+    }
+
+    .footer-col h4 {
+      color: white; font-size: 0.85rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      font-size: 0.85rem; transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--aqua); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      align-items: center; gap: 1rem;
+      font-size: 0.8rem;
+    }
+    .footer-bottom a { color: var(--aqua); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+    }
+
+    /* ─── STICKY CTA BAR (mobile) ────────────────────────────────────── */
+    .sticky-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
+      background: var(--blue-deep); padding: 0.75rem 1rem;
+      gap: 0.75rem;
+    }
+    @media (max-width: 768px) { .sticky-bar { display: flex; } }
+    .sticky-bar a {
+      flex: 1; text-align: center; padding: 0.75rem 0.5rem;
+      border-radius: 12px; font-weight: 800; font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .sticky-bar .s-call { background: white; color: var(--blue-deep); }
+    .sticky-bar .s-text { background: var(--aqua); color: var(--blue-deep); }
+
+    /* ─── PHOTO STRIP ───────────────────────────────────────────────── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 0; height: 340px; overflow: hidden;
+    }
+    .photo-strip-item {
+      position: relative; overflow: hidden;
+    }
+    .photo-strip-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+    .photo-strip-item:hover img { transform: scale(1.06); }
+    .photo-strip-item .strip-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,40,80,0.55) 0%, transparent 60%);
+      display: flex; align-items: flex-end; padding: 1.2rem;
+    }
+    .strip-label {
+      color: white; font-size: 0.8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.3rem 0.8rem; border-radius: 50px;
+    }
+    @media (max-width: 600px) {
+      .photo-strip { grid-template-columns: 1fr; height: auto; }
+      .photo-strip-item { height: 220px; }
+    }
+
+    /* ─── CINEMATIC DIVIDER ──────────────────────────────────────────── */
+    .cinematic-divider {
+      position: relative; height: 480px; overflow: hidden;
+    }
+    .cinematic-divider img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center 40%;
+    }
+    .cinematic-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,40,80,0.82) 0%, rgba(10,100,160,0.55) 50%, rgba(6,60,100,0.72) 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cinematic-content {
+      text-align: center; color: white; padding: 2rem;
+      max-width: 720px;
+    }
+    .cinematic-content h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .cinematic-content h2 span { color: var(--aqua); }
+    .cinematic-content p {
+      font-size: 1.1rem; color: rgba(255,255,255,0.85);
+      margin-bottom: 2rem; line-height: 1.7;
+    }
+    .cinematic-content .btn-hero-primary { display: inline-flex; }
+
+    /* ─── PHOTO GALLERY ──────────────────────────────────────────────── */
+    .gallery-section { background: var(--slate); padding: 4rem 0; }
+    .gallery-header {
+      text-align: center; padding: 0 1.5rem; margin-bottom: 2rem;
+    }
+    .gallery-header .section-label { color: var(--aqua); }
+    .gallery-header .section-title { color: white; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 260px 260px;
+      gap: 6px;
+    }
+    .gallery-item {
+      position: relative; overflow: hidden; cursor: pointer;
+    }
+    .gallery-item:first-child {
+      grid-column: 1 / 3; grid-row: 1 / 3;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.07); }
+    .gallery-item .gal-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,40,80,0.6) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gal-overlay { opacity: 1; }
+    .gal-label {
+      position: absolute; bottom: 1rem; left: 1rem;
+      color: white; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.05em; opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gal-label { opacity: 1; }
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 200px);
+      }
+      .gallery-item:first-child { grid-column: 1 / 3; grid-row: 1 / 2; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 200px);
+      }
+      .gallery-item:first-child { grid-column: 1; grid-row: 1; }
+    }
+
+    /* ─── ABOUT VISUAL ───────────────────────────────────────────────── */
+    .about-visual-img {
+      position: absolute; inset: 0;
+      background: url('https://images.pexels.com/photos/30463419/pexels-photo-30463419.jpeg?auto=compress&cs=tinysrgb&w=900&h=700&fit=crop') center/cover no-repeat;
+    }
+    .about-visual-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(8,40,80,0.88) 0%, rgba(10,100,160,0.75) 100%);
+    }
+    .about-visual-inner {
+      position: relative; z-index: 1;
+    }
+
+    /* ─── SUCCESS MESSAGE ────────────────────────────────────────────── */
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+      color: var(--blue-mid);
+    }
+    .form-success.show { display: block; }
+    .form-success-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+    .form-success h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="data:image/png;base64,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" alt="BPC Pool Maintenance" class="nav-logo-img" />
+      <div class="nav-logo-text">
+        <strong>Brian's Pool Care</strong>
+        <span>Pool Maintenance · Ahwatukee, AZ</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#about">About Brian</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#service-area">Service Area</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:4809077959" class="btn-call">📞 480-907-7959</a>
+      <a href="#contact" class="btn-primary">Get Free Quote</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#pricing" onclick="closeMobile()">Pricing</a>
+    <a href="#how-it-works" onclick="closeMobile()">How It Works</a>
+    <a href="#about" onclick="closeMobile()">About Brian</a>
+    <a href="#reviews" onclick="closeMobile()">Reviews</a>
+    <a href="#service-area" onclick="closeMobile()">Service Area</a>
+    <a href="tel:4809077959" class="btn-primary">📞 Call 480-907-7959</a>
+    <a href="#contact" class="btn-hero-secondary" onclick="closeMobile()">Get Free Quote</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-ripple"></div>
+    <div class="hero-ripple"></div>
+    <div class="hero-ripple"></div>
+    <div class="hero-content container">
+      <div class="hero-left">
+        <div class="hero-badge">4.4 Stars · 14 Reviews · Family Owned · Ahwatukee, AZ</div>
+        <h1>Crystal Clear Pools.<br><span>Zero Hassle.</span></h1>
+        <p>Ahwatukee's trusted pool cleaning and maintenance experts. Brian and his certified team handle the chemicals, cleaning, and equipment — so you can just enjoy your pool.</p>
+        <div class="hero-buttons">
+          <a href="tel:4809077959" class="btn-hero-primary">📞 Call Now — It's Free</a>
+          <a href="#contact" class="btn-hero-secondary">✉️ Get a Quote</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">Why Homeowners Choose BPC</div>
+        <div class="hero-stat-row">
+          <div class="hero-stat">
+            <span class="hero-stat-num">14</span>
+            <span class="hero-stat-label">5-Star<br>Reviews</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">4.4★</span>
+            <span class="hero-stat-label">Google<br>Rating</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">14pt</span>
+            <span class="hero-stat-label">Service<br>Checklist</span>
+          </div>
+        </div>
+        <div class="hero-review">
+          <div class="hero-review-stars">★★★★★</div>
+          <div class="hero-review-text">"Brian's team has been taking care of our pool for over a year. Always shows up on time, always professional. Our water has never been cleaner."</div>
+          <div class="hero-review-author">— Sarah M., Ahwatukee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item"><div class="trust-icon">✅</div> Licensed &amp; Insured</div>
+      <div class="trust-item"><div class="trust-icon">🏅</div> Certified Pool Operators</div>
+      <div class="trust-item"><div class="trust-icon">⚡</div> Same-Day Emergency Service</div>
+      <div class="trust-item"><div class="trust-icon">🔒</div> No Long-Term Contracts</div>
+      <div class="trust-item"><div class="trust-icon">🏠</div> Family-Owned &amp; Operated</div>
+    </div>
+  </div>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <div class="photo-strip-item">
+      <img src="https://images.pexels.com/photos/28408327/pexels-photo-28408327.jpeg?auto=compress&cs=tinysrgb&w=900&h=340&fit=crop" alt="Tropical infinity pool at golden sunset" loading="lazy" />
+      <div class="strip-overlay"><span class="strip-label">Luxury Pool · Ahwatukee</span></div>
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.pexels.com/photos/261152/pexels-photo-261152.jpeg?auto=compress&cs=tinysrgb&w=600&h=340&fit=crop" alt="Crystal clear blue pool water" loading="lazy" />
+      <div class="strip-overlay"><span class="strip-label">Crystal Clear Water</span></div>
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.pexels.com/photos/24807133/pexels-photo-24807133.jpeg?auto=compress&cs=tinysrgb&w=600&h=340&fit=crop" alt="Backyard pool at golden sunset" loading="lazy" />
+      <div class="strip-overlay"><span class="strip-label">Golden Hour</span></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">Complete Pool <span>Care Services</span></h2>
+        <p class="section-sub">From routine weekly cleanings to green pool rescues, LED lighting installs, and equipment repairs — Brian's team handles everything your pool needs to stay safe, beautiful, and swim-ready.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🗓️</div>
+          <h3>Weekly Pool Maintenance</h3>
+          <p>Consistent, scheduled visits every week. We test and balance chemicals, skim debris, brush walls, and vacuum the pool floor so your water stays crystal clear year-round.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🧪</div>
+          <h3>Chemical Balancing &amp; Water Testing</h3>
+          <p>Proper pH, chlorine, alkalinity, and calcium hardness keep your pool safe for swimmers and protect your equipment from corrosion and scaling in Arizona's hard water.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🦠</div>
+          <h3>Green Pool &amp; Algae Cleanup</h3>
+          <p>Algae overtaken your pool? We specialize in green-to-clean turnarounds — shocking, brushing, and filtering until your water is restored to sparkling blue.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3>Equipment Repair &amp; Replacement</h3>
+          <p>Pump issues, filter problems, or a heater acting up? We diagnose and repair or replace pool equipment — filters, pumps, heaters, and cleaners — to keep everything running.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🧱</div>
+          <h3>Tile Cleaning &amp; Calcium Removal</h3>
+          <p>Arizona's hard water leaves calcium scale and waterline deposits fast. We remove stubborn buildup to restore your tile's original shine without damaging the surface.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💡</div>
+          <h3>LED Pool Light Installation</h3>
+          <p>Upgrade your pool's ambiance with energy-efficient LED lighting. We handle the full installation so you can enjoy your pool after dark in style.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔬</div>
+          <h3>Filter Cleaning (DE &amp; Cartridge)</h3>
+          <p>Dirty filters reduce circulation and water clarity. We deep-clean DE and cartridge filters to restore proper flow and keep your system running efficiently.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🧂</div>
+          <h3>Salt Cell Cleaning</h3>
+          <p>Salt systems need periodic cell cleaning to maintain chlorine output. We inspect and clean your salt cell to extend its life and keep your water perfectly balanced.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⚗️</div>
+          <h3>Acid Wash &amp; Pool Draining</h3>
+          <p>When stains go deep or TDS levels get too high, we drain, acid wash, and refill your pool to restore a fresh, clean surface and reset your water chemistry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label">Simple Pricing</span>
+        <h2 class="section-title">Transparent Plans, <span>No Surprises</span></h2>
+        <p class="section-sub">Pick the plan that fits your pool. Every plan includes Brian's 14-point service checklist and no long-term contract required.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <div class="pricing-plan">Essential</div>
+          <div class="pricing-name">Basic Clean</div>
+          <div class="pricing-desc">Everything your pool needs to stay healthy week to week.</div>
+          <div class="pricing-price">
+            <span class="amount">$99</span>
+            <span class="per">/month</span>
+          </div>
+          <ul class="pricing-features">
+            <li>Weekly skimming &amp; brushing</li>
+            <li>Chemical testing &amp; balancing</li>
+            <li>Chlorine &amp; pH adjustment</li>
+            <li>Pump basket emptying</li>
+            <li>Visual equipment inspection</li>
+            <li>Post-service text update</li>
+          </ul>
+          <a href="#contact" class="pricing-cta outline">Get Started</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-plan">Complete</div>
+          <div class="pricing-name">Full Service</div>
+          <div class="pricing-desc">Our most popular plan — comprehensive care from top to bottom.</div>
+          <div class="pricing-price">
+            <span class="amount">$139</span>
+            <span class="per">/month</span>
+          </div>
+          <ul class="pricing-features">
+            <li>Everything in Basic Clean</li>
+            <li>Monthly filter cleaning</li>
+            <li>Salt cell inspection &amp; cleaning</li>
+            <li>Algae prevention treatment</li>
+            <li>Equipment performance check</li>
+            <li>Water quality report each visit</li>
+            <li>Priority scheduling</li>
+          </ul>
+          <a href="#contact" class="pricing-cta primary">Get Started</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-plan">Premium</div>
+          <div class="pricing-name">White Glove</div>
+          <div class="pricing-desc">Top-tier care for pools that deserve the very best.</div>
+          <div class="pricing-price">
+            <span class="amount">$179</span>
+            <span class="per">/month</span>
+          </div>
+          <ul class="pricing-features">
+            <li>Everything in Full Service</li>
+            <li>Tile &amp; calcium line cleaning</li>
+            <li>Quarterly water balance deep-dive</li>
+            <li>Same-day emergency response</li>
+            <li>LED light check &amp; adjustment</li>
+            <li>Annual drain &amp; refill consultation</li>
+            <li>Dedicated service tech assigned</li>
+          </ul>
+          <a href="#contact" class="pricing-cta outline">Get Started</a>
+        </div>
+
+      </div>
+      <p class="pricing-note">All plans are <strong>month-to-month</strong> — cancel anytime. Not sure which fits? <strong><a href="#contact" style="color:var(--blue-mid);text-decoration:none;">Get a free assessment</a></strong> and Brian will recommend the right plan for your pool.</p>
+    </div>
+  </section>
+
+  <!-- CINEMATIC DIVIDER -->
+  <div class="cinematic-divider">
+    <img src="https://images.pexels.com/photos/24807132/pexels-photo-24807132.jpeg?auto=compress&cs=tinysrgb&w=1800&h=480&fit=crop" alt="Luxury backyard pool at sunset" loading="lazy" />
+    <div class="cinematic-overlay">
+      <div class="cinematic-content">
+        <h2>Your Pool Should Look Like <span>This. Every Week.</span></h2>
+        <p>Stop spending your weekends fighting chemicals and scrubbing walls. Brian and the BPC team take complete care of your pool — so you just come home to perfection.</p>
+        <a href="tel:4809077959" class="btn-hero-primary">📞 Call Brian Today — 480-907-7959</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label">The Process</span>
+        <h2 class="section-title">Getting Started Is <span>Easy</span></h2>
+        <p class="section-sub">Three simple steps and your pool is in professional hands — no contracts, no hassle.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Call or Text Brian</h3>
+          <p>Reach out at 480-907-7959 (office) or 602-570-8124 (mobile). Tell us about your pool and what you need — Brian responds fast, Monday through Friday.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Free Assessment</h3>
+          <p>We come out and evaluate your pool's condition, water chemistry, and equipment. You get a clear, honest quote with no surprises — completely free of charge.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Enjoy Your Pool</h3>
+          <p>We handle everything. Show up on schedule, complete our 14-point service checklist, and leave your pool looking its best — every single visit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-visual-img"></div>
+          <div class="about-visual-inner">
+            <div class="owner-avatar">👨‍🔧</div>
+            <div class="owner-name">Brian</div>
+            <div class="owner-title">Owner &amp; Certified Pool Operator · Ahwatukee, AZ</div>
+            <div class="cert-badges">
+              <span class="cert-badge">✅ CPO Certified</span>
+              <span class="cert-badge">⭐ 4.4-Star Rated</span>
+              <span class="cert-badge">🔒 Licensed &amp; Insured</span>
+              <span class="cert-badge">🏠 Family Owned</span>
+              <span class="cert-badge">📍 Locally Operated</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-label">About Us</span>
+          <h2 class="section-title">Your Pool. <span>Our Priority.</span></h2>
+          <p>BPC Pool Maintenance was built on a simple promise: keep pools safe and clean for your family to enjoy. Brian founded the company in Ahwatukee and has spent years building a reputation grounded in honesty, trust, and genuine quality of work.</p>
+          <p>Brian's team — Jeremy, Lynn, Mitch, and Brian himself — are certified pool operators who show up uniformed and on time. No subcontractors, no surprises. When you hire BPC, you get the same team every week.</p>
+          <p>From weekly maintenance plans to one-time green pool rescues, we bring the same level of care and attention to every job. That's why our customers keep referring their neighbors to us.</p>
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>No Contracts Required</strong>
+                <span>We earn your business every visit — not through lock-in agreements.</span>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>14-Point Service Checklist</strong>
+                <span>Every visit follows our comprehensive checklist so nothing gets missed.</span>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>Same-Day Emergency Response</strong>
+                <span>Green pool before a party? Equipment failure? We'll get there fast.</span>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>Honesty &amp; Transparent Communication</strong>
+                <span>We only recommend what your pool actually needs — no upselling, no fluff.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label">What Customers Say</span>
+        <h2 class="section-title">Real Reviews from <span>Real Homeowners</span></h2>
+        <p class="section-sub">Don't take our word for it. Here's what our customers in Ahwatukee and the Phoenix area have to say about working with Brian and the BPC team.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Brian's team has been taking care of our pool for over a year. Always on time, always thorough. Our water has never looked this good — crystal clear every week."</p>
+          <div class="review-author">
+            <div class="review-avatar">S</div>
+            <div>
+              <div class="review-author-name">Sarah M.</div>
+              <div class="review-author-meta">Ahwatukee · Verified Customer</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Called BPC for a green pool emergency before a family party. They came out same day and had it looking perfect by the next morning. Absolutely saved the day."</p>
+          <div class="review-author">
+            <div class="review-avatar">T</div>
+            <div>
+              <div class="review-author-name">Tom R.</div>
+              <div class="review-author-meta">Phoenix · Verified Customer</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"What I love most is the honesty. Brian told me I didn't need a service I was about to pay another company for. That kind of integrity is rare — they've earned a customer for life."</p>
+          <div class="review-author">
+            <div class="review-avatar">K</div>
+            <div>
+              <div class="review-author-name">Karen J.</div>
+              <div class="review-author-meta">Ahwatukee · Verified Customer</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Reliable, professional, and affordable. I've tried three other pool services in the area and BPC is by far the best. Jeremy is always friendly and does excellent work."</p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <div class="review-author-name">Mike D.</div>
+              <div class="review-author-meta">Chandler · Verified Customer</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Our pump broke down on a Friday afternoon. Brian picked up immediately and had a tech out within two hours. Fixed on the spot. I can't recommend these guys highly enough."</p>
+          <div class="review-author">
+            <div class="review-avatar">L</div>
+            <div>
+              <div class="review-author-name">Lisa H.</div>
+              <div class="review-author-meta">Phoenix · Verified Customer</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Great service, great price. They handle everything — chemicals, brushing, filter cleaning — and always leave the pool looking perfect. We switched from a bigger company and haven't looked back."</p>
+          <div class="review-author">
+            <div class="review-avatar">D</div>
+            <div>
+              <div class="review-author-name">Dave &amp; Carol P.</div>
+              <div class="review-author-meta">Tempe · Verified Customer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="review-cta">
+        <p>Happy with BPC? Help your neighbors find us!</p>
+        <a href="https://www.google.com/search?q=BPC+Pool+Maintenance+Ahwatukee" target="_blank" rel="noopener" class="btn-primary">⭐ Leave Us a Google Review</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section id="service-area">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Where We Work</span>
+        <h2 class="section-title">Proudly Serving <span>Greater Phoenix</span></h2>
+        <p class="section-sub">We service pools throughout the Phoenix metro area with a focus on Ahwatukee and the South Mountain corridor. Not sure if we cover your neighborhood? Give us a call.</p>
+      </div>
+      <div class="area-grid">
+        <div class="area-chip">📍 Ahwatukee</div>
+        <div class="area-chip">📍 Phoenix</div>
+        <div class="area-chip">📍 Chandler</div>
+        <div class="area-chip">📍 Gilbert</div>
+        <div class="area-chip">📍 Tempe</div>
+        <div class="area-chip">📍 Mesa</div>
+        <div class="area-chip">📍 South Mountain</div>
+        <div class="area-chip">📍 Laveen</div>
+        <div class="area-chip">📍 Goodyear</div>
+        <div class="area-chip">📍 Scottsdale</div>
+        <div class="area-chip">📍 Sun Lakes</div>
+        <div class="area-chip">📍 Maricopa</div>
+      </div>
+      <div class="area-callout">
+        <div>
+          <h3>Not seeing your area? Give us a call.</h3>
+          <p>We may still be able to help — reach out and we'll let you know.</p>
+        </div>
+        <a href="tel:4809077959" class="btn-white">📞 480-907-7959</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="gallery-section">
+    <div class="gallery-header">
+      <span class="section-label">Our Work</span>
+      <h2 class="section-title">Pools That <span style="color:var(--aqua)">Shine</span></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/3155666/pexels-photo-3155666.jpeg?auto=compress&cs=tinysrgb&w=1000&h=520&fit=crop" alt="Luxury infinity pool at sunset" loading="lazy" />
+        <div class="gal-overlay"></div>
+        <span class="gal-label">Luxury Residential Pool</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/8028674/pexels-photo-8028674.jpeg?auto=compress&cs=tinysrgb&w=600&h=260&fit=crop" alt="Professional lap pool top view" loading="lazy" />
+        <div class="gal-overlay"></div>
+        <span class="gal-label">Weekly Service Results</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/6858600/pexels-photo-6858600.jpeg?auto=compress&cs=tinysrgb&w=600&h=260&fit=crop" alt="Crystal clear blue pool tiles" loading="lazy" />
+        <div class="gal-overlay"></div>
+        <span class="gal-label">Crystal Clear Water</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/261238/pexels-photo-261238.jpeg?auto=compress&cs=tinysrgb&w=600&h=260&fit=crop" alt="Residential backyard swimming pool" loading="lazy" />
+        <div class="gal-overlay"></div>
+        <span class="gal-label">Backyard Ready</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/347143/pexels-photo-347143.jpeg?auto=compress&cs=tinysrgb&w=600&h=260&fit=crop" alt="Blue pool tiles top view" loading="lazy" />
+        <div class="gal-overlay"></div>
+        <span class="gal-label">Sparkling Clean</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Ready for a <span>Cleaner Pool?</span></h2>
+        <p class="section-sub">Fill out the form and Brian will follow up within a few hours. Or just call or text directly — we love talking pools.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-card-icon">📞</div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:4809077959">480-907-7959</a>
+              <p>Mobile: <a href="tel:6025708124">602-570-8124</a></p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:contact@brianspoolcare.com">contact@brianspoolcare.com</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">🕐</div>
+            <div>
+              <h4>Hours of Operation</h4>
+              <p>Mon–Fri: 8:00am – 4:00pm<br>Saturday &amp; Sunday: Closed</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">📍</div>
+            <div>
+              <h4>Location</h4>
+              <p>Ahwatukee, Arizona<br>Serving the greater Phoenix Metro</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3>Request a Free Quote</h3>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="480-555-0000" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service…</option>
+                <option>Weekly Pool Maintenance</option>
+                <option>Green Pool / Algae Cleanup</option>
+                <option>Chemical Balancing / Water Test</option>
+                <option>Equipment Repair or Replacement</option>
+                <option>Tile Cleaning / Calcium Removal</option>
+                <option>Filter Cleaning (DE or Cartridge)</option>
+                <option>Salt Cell Cleaning</option>
+                <option>LED Light Installation</option>
+                <option>Acid Wash / Pool Draining</option>
+                <option>Not Sure — Need Assessment</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About Your Pool</label>
+              <textarea id="message" name="message" placeholder="Pool size, current issues, how often you need service…"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send My Free Quote Request →</button>
+            <p class="form-disclaimer">🔒 Your info is private. We'll only use it to reach out about your pool service.</p>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">🎉</div>
+            <h3>Request Received!</h3>
+            <p>Thanks for reaching out. Brian will get back to you within a few hours. If it's urgent, call 480-907-7959.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAFfpJREFUeNrsXQ1sHMUVfjYRjeoKLpUwVIWyhhKwSBMHElNUUM5OEAVCYwvzJ6hyR0mhIsi2qhJQUxynkUiQkImgbSAtcSQqAnJrR4TSNol9USNBwo+dkFSBtvaZSFXiSOSCVBRa1Hbf7p5/b3dnd2Z2Z27fJ61/72/nzff+ZuY9AAKBQCAQCAQCgUAgJBfNG9I0COqgkoZAKXJkzK+tNBBEEEJprDCvJpMoBg0FEYQw1XqkLHLYaKIBIYIQpiIz6Wdys4gghGlYOelnw7QodTQkRBCC7V6lza/TCUFWhAhCKGE9JlwuOy4hEEESbT2MafHHZLTRABFBKDgPZlkIEeIcGoJYrQe6UK+Y12yXR6SgtnEUjvUP0WCRBUki2iwSeKODhoksCFkPd5AVIQtC1oOsCFkQQnDrMdmKnDGtyNs0eGRBkoCuANZjworQuggRJAHWA1fMMyGemSJXiwiSFOsRPm6hrfBEkDK2Hmg50pyvso0GkoL0cg3M3wwQmLvBoLQvWZByREeIwNzdTaOAnQhSRtYjDWI3HqbI1YoGFTQEkbhWg5ZrJB4N0Ls2R4NMFkR318qQ9NrbyNUigpBr5RWwk6slFZTFkutavSkwMHfDVVDbeAiO9R+jQScLohO2SXStSrlaBg05EUQX65GBaGtbUVaLXCxtyIGavBf4FwSDxyO1jRWmq5UjIZAFURm9EcQdbuigelpEEJWtB25ErIudoJT6JYIoSI40qFGmx6B4hGIQ1ciBGvutGOION1xFJxDJglDcQfEIEUQD67EO+M94yICd+qV4hAuzaAi44w62Y7DVKXi8cUGotzn9r7Pw1shJOHwkH/SpaEEwcZAlYYUD7eblizuYd+nOn2fAofX3cb1lwSTKpjfehY2vHwAwfw6ALPSu7SahkYsVJaLcSmL7TFWz4am7boDTWx6BOTUXBXlqF21FIYJEaT0wnRtbmzQkyjBao2rm8CLlJBIIRBDp5KgDBcrvIEn2Pro8WDxiJxQIRBDprpUSmaHGqy+1YpsA6KA+7EQQmdZjHcS/lWQKnly+ODjBKfVLBClX12o67qifC1AVaAHfAKrQSASR5FopifnBMlqINnK1iCAirUdbVK7Vgid/CxXffwaWbuqx1j1YcOu8S8O8VRcJlggighzRF402idF/4EO44/ldTA+//ILzwrxLnUN8AhGEC2FaFQgBkoQFl1WfH/YtqKUCEYTLemBAm4nzI/QfHZX58tRSoewJIlcDJsFPl9tSQXMLVVkG5OiV9No4aZogGeiQNIaZuC1w0i0ITuC0JA2YJNejSZKmX2FeK4kg8WHlJKKUVewRMVLC79cmHMqlTuedxPoSxB70tPNbqwTLpARwv1VEED2GGYmvTQQJKABD8MqwEgINuBGRF4bgM+wrVVQ4SSLISp/fw1qmOoj4INQMVKegpXEB7FtzB9PDdx89LmtMw45hGqbuPEDyaUkSPc+k29kRY4ZFad7QDr1rC5yvno7z1sIcy/37WEHU26clEg2tch9ZkHisRxEitk4s0W0weo4IW0ys485muSc40joG6/oRxDbfaYkuQlqn4RgZOwMgzoKIuP+Mx/86iCDxWY+ir5vhIB9qT61Wfl/MfSD6Jes4x6/VkzyarazrRRC29YmOWCZHDMDt8FYJILHgySu3MSiYNiKIPLBMfj4rohFWbdsTtD4WMI2fHOsxEaxrZEX0IUiw1e2wVkQbC/LEa/uhp/+QSh+JxXqA85g2Ioh4BNlZG9aKKK/ZcPs7njrcuGOfSsqL1XpMKDBNMlp6rIPYmaugC00ohD4B6yKR4tcDh+Efpz6d8feDIyegf+Sk6IyVSNc3FeI5WSJIdLFHKV8aTfk6nQjy3MAHYYpUx+36hnGZMKO12VRgQ+Ri8QkAXaV0yGe3BjTlOSDIdH1FPpcI4vi2PIOYAqreERT5APIJ4/pORlr1jKPqFiSMbzsdTQF2+uaJHzDKSA5Rvdm7VE77qksQe1etqHQgW7nN3rVEEADWmKANxOx6VrpwhMoWRGQlQyOAEHJEECblJXJSK1vpUU2CyCkS3cZ4IGhfgsmRZ7SiMsqwKllUu1JBcsgsEs0i2CRbkByDfGQor6BWPtEWRGaRaDzv0OUTh+AkKSSUIDtjVF5KulpqESSa/hssQuhLIDkKpnLwu+8oKtwr5WpVKkSOdIQm1k8ImxNIkD4f+XRBNJs50dXqIoJMHXxROXUxQrC3PwwljCCbfZRXlDtwM6oUeVDFgkTeUtkRQoasiBOcu+2Jklne1d/KG0QQe5LGpS3c+4f3ru2G5Kysd/oorzhigqi9CgUJYmdF4vQ3/bRjNgHk6HMyd6XkE2s/eLD3aq1LsgVRoaWye+rXnjjlnNHCdHa7osqriFhbV8dHkOiyIixo8wgKs1C+6yLtJVfOo0+asMQjsSjSWTGRownUO5eMQsjNOIGIvzdvyPIGqsex7yBDt6jj4osweLlW3a6xmVrn8w2HsM1Rv3FFDOTAmx0ENc9/I0EaXD73OiifniGYsWooeRzZTpqo2vIaLd6zUb7hOZHfYm3jAMRdHNpLU9U2VsCx/plBK/6tttEAzWpnucQdSI4TLnHHK+Y1W9HP/l1TBjtNWZwoTwuijxZu8MjsoHbNaE4OtzWPQW4FUDUb5tdcBNfXXAhzqiZ4hkUnBsfOwOkR7rmNMdPCqIpxVERIDsxEDLA8dO/P7w/dOAarDb6fP2m1BNiIdaPCVQHBJ9W4CkFPkviRo4snLsR2DU/cthiuMYnhJ5+egx/xFqfA+Km5fAhiZyBGWOMOHoJMB5bRWfXS7jAVCL2FoBdJkBRZD3I0hU1CzDGtxZ7Vy32JUQq/M4nS8tzrYatDZj2SDMIQVZo3tvWOBxvmw3vr77dMf0A0OQtlpdG7NgtuawiqJR68LUfolC6SY3j9faHIgbijfi4MP/Og9Toh0BXFVhT5BIl/NdYSYM+jt4d5aofnKUQ7o7IQ1N2S0mll5bz99d5QystUOEiOVBVfPF9TfT68t6YljAKLZI9YpWRyGKoE5aitsLVZCCF4a1dbMyNJnlWIGENOILuOQXmlw7zB03ffyE2OySTZ+sBNYZ5aJ3srimwLosJWkgmhLl8sRwiooXvXtjtEycV4i3nHN1/oW7GQR3mZxPjJ8nrhrnAIBeZv5ZUlCId2koWl4QN/tmLLOCnthcYGiHYPl00M22qwBq6hlddDjQuk3MRD113Jo4g1IkgErtX7IyetKud4YSsA1liE0xqyAddQ7AxYjeN6yYpRkAzN5nvVWMRgXRvgK+cKd9VfIeVmOF63zjOhwgFZe7G6ZLtWhc/OjufR8fvlF5xnm2kG9yBkWtEukxkktWhvBGy3LtsNwEm5xPkeZnyGHBduH8P5cTdycJdjZUnB43oHNvj5aOwMPGm6tlYM6KfADC4FVqzmn1ebIPz1WkOhVMuAUsBVXo4Fqq7QLRUmjvE+O8nKGmCvXKd8SFFwXdkPM5E4lBdrSnbrwOHxBj8t5ngPb1ltBeOeGRG+oL9YoTGrNkHKZ0OfmxDEtFSwNV0+0qA+fKuCcVzCOIlfPvi3Kb+PnCr4EkQA8Bj1doHKRHAMwunbaoJW3Tq1JkR5SbnHShJAaCuiF4L1eHTFrfMuVf1O0yJPIFYKFEATqLuNnaxIMpSX8HutFDppNMDhESFHCeRYEdTyfqVRY7QeGiEtap9WpUABxBp7fPXL5/o+BlOPAvuKr5RimeRkAJNEDqEKu1KlDxMaVbNhFcMayN6jH4t8V0NCtY0m53VFk2RlAgmSUYkgka974KISnhvB6/SWR5hy6Ot3vQPKTjx7IbHoFqyQ9LpJQkqEopmlqwCQEEEOVeHBKQntlUVakNYpCqd5Q7ugY6VK1Lj91cAH1inPiIG7FvriJYgG6x7WqUI8uSYehqUgeHt92xmxpmlJAPy9W9AkiR3FVfXIg3UFXKwlKpPj4W17ZJGjCBFbrZtg5vaPVlUmicao403HVyoyQaRhS3YZbMXThFXSKtmI2Pvd4SJcvskt8ZyEViSJmSDKB4C4yzfkkVv5CsImgSEpCWAQP+IkiAL9G1iB261b5Bz04V1R91r1zXCOMVkQTvnwWpDYCFJwat3iVWBc/MO6TUppKNt6pDkIRPDH+XESJDZgcbilP3vZuuY8/AumwtDWicJqpbZQsUz+jE6WutxcrFllMQSmBWl5aQ988swPfB/aaJKkf0yBbgZs1mMykbRu5vP0AzfBtQxHnlHhqYRZ5aImWGu+1tdcBP0HPtTFeky2Ip2ij5NGCSSHqGqZUaISyghYyMEPeHZdM+tRRBcQwmAoToIopdGwkIMfLhN/7DOMAMKUqWmKsxWZxjgTH0E0NvkieRnQeuA5krBBd1cE5E22fCS4WEknyVAAcqSAL20btP4TKbCYXSzSUgBBduGJqBfWwby/iHcTJRFECEH2kQCYA/OMgPcL2q4gl2jZcB4ZEEEQrQQwPHZG5MvlmbS0+LbKQQL2JCsw7rnJTxB7gijh67Lk2VkrMAoWAE9g7gbW3uF9CSbIvvgJoogQWDcinhbbh3wng/WoAzn7qQym1xWswP5wZJTpcdPrZ9VcEPkWn0Lo+sUSCLI9LmJgrdjH71kCW7PLmB7/FsNiYgD3qi9i12qmZWJztSJXYGtuWwTz59lGE7eZRFB2VMo9i9lqglqqeQNqqsi2V6M79b/f/zTw8wSeS2dRCh0RjAm6Wn5tkTeDoDperOOHNQMOrb8v0Gu/L055Fe+ZG5WqfSCZYNnxGwDdPtYjDdGUKDXAv01cHsScb7eA3WllYK84+eREpbjFEcTum5FXmSCvTas4zkUOr10EtmvVG+GtNTmFw73QKerNdkgiyMvi5CPsXkVvVlS2LTIeqnpBTGWNAsN9xtGb0bstskArghVKBLtDMDJ2RpT7m1O3/YEdtOZUJMimN94VVXa009Pfj6/tNYvV6gTOvUlFLHt+l1gTKO71hJ6bkbHdPStKCCJjj407hKyXDTm90d3IISulywrvjry2FRHifuD5mzsFTWp8HUHWQ/iZGfEEmejLpwSwaNzSjT2iXKtmn7hDhbbXHZ6pX5vgQqw8ulpLN/Uw1wQo5fYiOQQVlcv59oVXxIIUA/buuGYIDjwSAzvgWkXjxLhW7T7aqQvUqSLS67PK3iwqoYKnM7EmAI43K1GK8pnz49+IIoe38uJAhTQR2QIaCDNpcPHvkpCF3g7jeXPxZ847PbWTXSS5F9RCzunZ7uUODoi2eI3XXWkda15kVMOcqi+N//09M6j/5LN/Wyvxgmsko7AbZO1crpAqIg6SKARM6WY97tEwvw4q4FqFIXad89l1RjZQa24lXKwJV8tmt75nRrzJUXRn1CQHSzwypGJSRRVyyCeI3iTxJ4fdLk116+i969eeYA2akaQQBTmiIchUknRrIoB2BnJg3NHmF0spAAP8t6IMOfLJa0KOhijIgTgnsts61n/WvHZCbSOeWPquwoN/izn4OxhjK/dMQnUK1t+8EHYPDqtwX1dZ436s/20P+ZwwH7Pdeqx9qYiceV0fZbGQilhu0w4OtynmnvQ5ZrvA8PmRHGmvh7z3zINw7aYeGRk1Xs3LcgKyDewFz5RCn73Tc5G2rAgyIYh1YDeKiVMQeYcYOcbPjJPHs/wOnk/BrruPvbRbNQ2MOwEWMt5nyrnPjAKKqz2uElMVsYvMFkRbDETJO1qpO8Bn9U2LYtwxvP4+a/EMxJ5eFIXOQCvOE9tnot5flnM+ay7OwapQRmw2UTIOUQzJGmlnqCCvecOgp1tYNRuGTdfqxdwHovZ+ycLCwAtr9npPqyMjWYqs4MhnsyoliyqUFJ+ttVBjrRAUp+Cg77O+hzXVtjvouRERW7211M9V2XoEd7VKj0VRNmkByqwwSWkpV2CiAlSHbVnqHGFc6ggk5UKcIWfA8fuoMxFyAj6DAT6r5bjFYu+aFnjitf2qW49wrpb32NQ514JJskmVIELRKuxzXNwh1YvbVQCBZRJ4Z61M1+r0lkesc9gVaD3GtFlzq6H6yt6opCFgcifSXg/BBqFIDtyhqhE5ENtIwEQQXnimdNG1wgahiMd2vaPbvaWppQIRhMd6ZDyDULQa2ZusH/FMNWuXK8VATUKJIHImz+O3XzdeEG3TG+/oeo9px40kEEEEWo/qFDx11w3jv76gRt/DsGglgRNBhFqPrXffOP6zVQJnrKDzvVIsQgQJZD3SfrHHgw3zx3/dK7ZiY1xYSYInggiZLBh7TMYfj35cDvecYe5cRQRJPDyD1h+mvzXl9/4jo4m4byIIobgw6KpJcbfu5FL+mN5VfN9VEKygCUAE8cMSr38+0TDVeoycKpTTvVOgTgThmyRLp7V52330eDnde8rZSU0ggrjCc4JcU3Nhou+fCJLs+MNzchRbipU5DJoIRBB3F8MDc6Pvs6dcDEYEIYK44pvVtExABKH4g0AgghAIRJAIcPkF59EgEEESg8CrfpclI3AnghAsBK6w0Tht4ZBABEksDrocqS2z9ZEhkjQRpDR8amgN4sbEErh1XllZkVGaCEQQL+Td/oFFGUo1qrxz8RVkQYggFIcg9pY4HGXtzyqXRcSYi0UTQdTHTq9/7jj4Ucm/P718MVkPIkgi4KlBew58WNLNWoVn1EO2rtZFORBBCODUqnXXpCY5ekpYESw9Ov2suoboowlABGHBdq9/rnr1LyX/vua2RTpbEeUrrRNB1EG353/HClabgzKzIttJ7EQQVjer4EeSja8fsAs2TANWW1Sk/XMQ+N4vEYQwHZ2e/zVjkabnd5X8157Vy3VztTYzdfdNIM6hIXDBsf4C1Dbi4sa33R5y0nS1Pq+ohGVXf2PK37825ytwsXm97pISVtB63Gv1sScQQQKhtvGA+fVh83I1B/uPjMLF1akZxRzwd/y7BiT5kWk93iZhE0HCWJGzJkmwbPs9Xg9DEriR5OipT+GvWNxaTeRMcrSToIkgPCQ5ZpIEj+JeFYYkd9XPhSozHtk9OKyia3WL5UoSiCCcrtafHCuS8iNJqZjkO3O/brtbuI/rP1+oclf3kmvlD+pyywq7ZtaAH0kQeD6kb/XyKTV8EdhHZNnzu1Ro1SamBTRZEMIkV+uEY0ke9nsoZrc2DxyGz7/4LywyqmH2ubOsv2N2a83N11hWZn98FeG7Ke4ggsgkCc5s/zYBpiuFJNj058EZREEX7Hv1V8Lb//zEIlPE5MiSIMnFku1upc2vvSzu1mRgy+h7zaC9xbxSzkJi/9FRaH91Pxw+kidyEEGSGZOUAm5HWWjGKPXmd7QuvzRdsn55jUAp5iCCxEKSlGNJ0op+QvTfsiY5aBs7ESRWorSZX7sU+1Q5hxx5EhARRAWSGObXbQpYE7Qa7SYxukkoRBBVA/iOGIiCxNhsXs/SzlwiiC5EaQX5nWPzDjG6iRhEEF0D+QzYjWmaBJICA+/tdEyWCFKOlgWvBWCniNMMZMALiXAI7B24FHgTQRJpaerG4wmyDAQCgUAgaIz/CzAA3lzqq77dD+QAAAAASUVORK5CYII=" alt="BPC Pool Maintenance" class="footer-logo-img" />
+            <strong>Brian's Pool Care</strong>
+          </div>
+          <p>Ahwatukee's trusted pool cleaning and maintenance experts. Family-owned, certified, and committed to keeping your pool safe, clean, and beautiful — based on a relationship of honesty &amp; trust.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Weekly Maintenance</a></li>
+            <li><a href="#services">Green Pool Cleanup</a></li>
+            <li><a href="#services">Chemical Balancing</a></li>
+            <li><a href="#services">Equipment Repair</a></li>
+            <li><a href="#services">Tile &amp; Calcium Cleaning</a></li>
+            <li><a href="#services">LED Light Install</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Brian</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#service-area">Service Area</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:4809077959">📞 480-907-7959</a></li>
+            <li><a href="tel:6025708124">📱 602-570-8124</a></li>
+            <li><a href="mailto:contact@brianspoolcare.com">✉️ Email Brian</a></li>
+            <li><a href="#contact">📋 Free Quote Form</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 BPC Pool Maintenance · Ahwatukee, AZ · Brian's Pool Care</span>
+        <span>Keeping pools safe &amp; clean for your family to enjoy</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY CTA -->
+  <div class="sticky-bar">
+    <a href="tel:4809077959" class="s-call">📞 Call Brian</a>
+    <a href="tel:6025708124" class="s-text">📱 Mobile Line</a>
+  </div>
+
+  <script>
+    const btn = document.getElementById('hamburgerBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => menu.classList.toggle('open'));
+    function closeMobile() { menu.classList.remove('open'); }
+
+    document.addEventListener('click', e => {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+    });
+
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.boxShadow = window.scrollY > 10
+        ? '0 2px 20px rgba(10,60,120,0.1)'
+        : 'none';
+    });
+  </script>
+</body>
+</html>
