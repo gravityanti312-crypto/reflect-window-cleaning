@@ -91,51 +91,49 @@
 
     /* ── RESPONSIVE NAV ───────────────────────────────── */
 
-    /* large desktop: full size */
+    /* large desktop */
     @media (max-width: 1300px) {
-      nav { left: 2.5rem; right: 2.5rem; }
-      .nav-links { gap: 1.5rem; }
-      .nav-links a { font-size: 0.97rem; }
+      .nav-links { gap: 20px; }
+      .nav-links a { font-size: 0.95rem; }
     }
 
-    /* medium desktop: shrink font + gaps + buttons */
+    /* medium desktop: shrink */
     @media (max-width: 1100px) {
-      nav { left: 1.5rem; right: 1.5rem; padding: 0 1rem; }
-      .nav-links { gap: 1rem; }
+      nav { padding: 0 28px; }
+      .nav-links { gap: 14px; }
       .nav-links a { font-size: 0.85rem; }
-      .nav-phone { font-size: 0.85rem; }
       .nav-logo img { height: 44px; }
-      .btn-nav { padding: 0.5rem 1rem; font-size: 0.82rem; }
+      .btn-nav { padding: 8px 16px; font-size: 0.82rem; }
     }
 
-    /* collapse to hamburger on anything below full desktop */
-    @media (max-width: 1100px) {
-      nav {
-        top: 10px; left: 0.75rem; right: 0.75rem;
-        height: 64px; padding: 0 1.25rem;
-      }
-      .nav-logo img { height: 42px; }
-      .nav-links { display: none; }
-      .nav-phone { display: none; }
-      .nav-right { display: none; }
+    /* collapse to hamburger */
+    @media (max-width: 900px) {
+      nav { height: 64px; padding: 0 20px; }
+      .nav-logo img { height: 40px; }
+      .nav-left { display: none; }
+      .btn-nav-desktop { display: none; }
       .hamburger { display: flex; }
     }
 
     /* ── MOBILE MENU ──────────────────────────────────── */
     .mobile-menu {
       display: none; position: fixed;
-      top: 86px; left: 0.75rem; right: 0.75rem; z-index: 999;
-      background: rgba(10,20,40,0.97); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 14px;
-      padding: 1.5rem; flex-direction: column; gap: 1rem;
+      top: 64px; left: 0; right: 0; z-index: 999;
+      background: rgba(10,20,40,0.98); border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 1.25rem 1.5rem 1.75rem; flex-direction: column; gap: 0;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
       text-decoration: none; color: rgba(255,255,255,0.88);
-      font-weight: 600; font-size: 1.05rem; padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-weight: 600; font-size: 1rem; padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .mobile-menu .btn-nav { text-align: center; margin-top: 0.5rem; display: block !important; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .btn-nav {
+      text-align: center; margin-top: 1rem;
+      display: block !important; border-bottom: none !important;
+      padding: 12px 24px !important;
+    }
 
     /* ── HERO ─────────────────────────────────────────── */
     .hero {
@@ -235,7 +233,26 @@
     }
 
     /* ── LAYOUT ───────────────────────────────────────── */
+    html, body { overflow-x: hidden; }
+    * { box-sizing: border-box; }
     section { padding: 3rem 2rem; }
+
+    @media (max-width: 900px) {
+      section { padding: 2.5rem 1.25rem; }
+      .hero { padding-top: 64px; }
+      .container { padding: 0 1.25rem; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 2rem 1rem; }
+      .hero { min-height: 420px; }
+      .hero-content { padding: 1rem 1rem; }
+      .membership-grid { grid-template-columns: 1fr; }
+      .cinematic { height: 360px; }
+      .area-callout { flex-direction: column; text-align: center; }
+      .contact-form-wrap { padding: 1.75rem 1.25rem; }
+      .why-badge { white-space: normal; text-align: center; width: 90%; }
+      .membership-header .save-big { font-size: 2.5rem; }
+    }
     .container { max-width: 1100px; margin: 0 auto; }
     .section-tag {
       display: inline-block;
@@ -936,10 +953,12 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
+  <a href="#why" onclick="closeMobile()">About Us</a>
   <a href="#services" onclick="closeMobile()">Services</a>
   <a href="#reviews" onclick="closeMobile()">Reviews</a>
   <a href="#why" onclick="closeMobile()">Why Reflect</a>
-  <a href="tel:4806487281" onclick="closeMobile()">📞 (480) 648-7281</a>
+  <a href="#" onclick="openQuoteModal(); closeMobile(); return false;">Contact</a>
+  <a href="tel:4806487281" class="btn-nav" onclick="closeMobile()">📞 Call Us</a>
   <a href="#" onclick="openQuoteModal(); closeMobile(); return false;" class="btn-nav">Get Your Quote</a>
 </div>
 
