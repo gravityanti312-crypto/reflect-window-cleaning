@@ -126,7 +126,7 @@
     .mobile-menu a {
       text-decoration: none; color: rgba(255,255,255,0.88);
       font-weight: 600; font-size: 1rem; padding: 0.85rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(30,41,59,0.09);
     }
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu .btn-nav {
@@ -403,13 +403,13 @@
     }
 
     /* ── WHY REFLECT ──────────────────────────────────── */
-    #why { background: var(--slate); }
+    #why { background: linear-gradient(160deg, #eef6ff 0%, #f3f0ff 100%); }
     .why-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
     }
-    .why-text .section-tag { color: #c4b5fd; }
-    .why-text .section-title { color: white; }
-    .why-text .section-sub { color: rgba(255,255,255,0.65); }
+    .why-text .section-tag { color: var(--purple); }
+    .why-text .section-title { color: var(--slate); }
+    .why-text .section-sub { color: var(--slate-light); }
     .why-list { margin-top: 2rem; }
     .why-item {
       display: flex; align-items: flex-start; gap: 14px;
@@ -422,8 +422,8 @@
       display: flex; align-items: center; justify-content: center;
       color: white; font-size: 0.75rem; flex-shrink: 0; margin-top: 2px;
     }
-    .why-item strong { display: block; color: white; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
-    .why-item span { color: rgba(255,255,255,0.55); font-size: 0.85rem; }
+    .why-item strong { display: block; color: var(--slate); font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+    .why-item span { color: var(--slate-light); font-size: 0.85rem; }
 
     .why-visual {
       position: relative; border-radius: 28px; overflow: hidden;
@@ -436,13 +436,16 @@
     }
     .why-badge {
       position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-      background: rgba(255,255,255,0.12); backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 16px; padding: 1.25rem 2rem; text-align: center; color: white;
+      background: white; backdrop-filter: blur(12px);
+      border: 1px solid rgba(4,107,210,0.15);
+      box-shadow: 0 8px 32px rgba(4,107,210,0.18);
+      border-radius: 16px; padding: 1.25rem 2rem; text-align: center;
       white-space: nowrap;
     }
-    .why-badge-num { display: block; font-size: 2rem; font-weight: 900; }
-    .why-badge-label { font-size: 0.78rem; color: rgba(255,255,255,0.7); }
+    .why-badge-num { display: block; font-size: 2rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .why-badge-label { font-size: 0.78rem; color: var(--slate-light); font-weight: 600; }
     @media (max-width: 800px) {
       .why-grid { grid-template-columns: 1fr; }
     }
@@ -1236,8 +1239,8 @@
     <div class="why-grid">
       <div class="why-text">
         <span class="section-tag">Why Reflect</span>
-        <h2 class="section-title" style="color:white;">Your Home. <span style="color:#c4b5fd;">Our Standard.</span></h2>
-        <p class="section-sub">We're not a franchise. Reflect is owner-operated by Daniel — a Scottsdale local who shows up personally and stands behind every job.</p>
+        <h2 class="section-title">Your Home. <span style="color:var(--purple);">Our Standard.</span></h2>
+        <p class="section-sub" style="color:var(--slate-light);">We're not a franchise. Reflect is owner-operated by Daniel — a Scottsdale local who shows up personally and stands behind every job.</p>
         <div class="why-list">
           <div class="why-item">
             <div class="why-check">✓</div>
