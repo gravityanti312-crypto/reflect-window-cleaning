@@ -890,7 +890,9 @@
       font-size: 0.83rem; color: #374151; margin: 1rem 0;
     }
     .qb-info-box svg { flex-shrink: 0; margin-top: 1px; color: #5d4fff; }
-    .qb-french-photos h4 { font-size: 0.95rem; font-weight: 700; color: #0f2544; margin: 1.25rem 0 0.6rem; }
+    .qb-french-photos h4 { font-size: 0.95rem; font-weight: 700; color: #0f2544; margin: 1.25rem 0 0.75rem; }
+    .qb-french-single-img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; display: block; }
+    @media (max-width: 768px) { .qb-french-single-img { height: 200px; } }
     .qb-photos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
     .qb-photos-grid img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; }
     .qb-sidebar { width: 260px; flex-shrink: 0; background: white; border-radius: 16px; padding: 1.5rem; }
@@ -1801,11 +1803,7 @@ document.addEventListener('keydown', function(e) {
         </div>
         <div class="qb-french-photos">
           <h4>See how French pane windows look</h4>
-          <div class="qb-photos-grid">
-            <img src="https://images.pexels.com/photos/280232/pexels-photo-280232.jpeg?auto=compress&cs=tinysrgb&w=400&h=260&fit=crop" alt="French pane windows" loading="lazy" />
-            <img src="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=400&h=260&fit=crop" alt="French pane windows" loading="lazy" />
-            <img src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=400&h=260&fit=crop" alt="French pane windows" loading="lazy" />
-          </div>
+          <img class="qb-french-single-img" src="https://images.pexels.com/photos/280232/pexels-photo-280232.jpeg?auto=compress&cs=tinysrgb&w=900&h=440&fit=crop" alt="French pane windows" loading="lazy" />
         </div>
       </div>
 
