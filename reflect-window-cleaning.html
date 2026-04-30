@@ -220,6 +220,7 @@
       display: flex; flex-wrap: wrap; justify-content: center;
       gap: 1.75rem 3.5rem; align-items: center;
     }
+    @media (max-width: 900px) { .trust-strip { display: none; } }
     .trust-item {
       display: flex; align-items: center; gap: 10px;
       font-size: 0.95rem; font-weight: 700;
@@ -739,9 +740,7 @@
       color: var(--slate); letter-spacing: -1px; margin-bottom: 0;
     }
     .dm-wrap { padding: 0 2rem 4rem; max-width: 1280px; margin: 0 auto; }
-    .dm-row { display: grid; gap: 0.65rem; margin-bottom: 0.65rem; }
-    .dm-row-large { grid-template-columns: 1fr 1fr; }
-    .dm-row-small { grid-template-columns: repeat(3, 1fr); }
+    .dm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
     .dm-card { position: relative; border-radius: 20px; overflow: hidden; cursor: pointer; }
     .dm-card-large { height: 420px; }
     .dm-card-small { height: 280px; }
@@ -759,11 +758,10 @@
     .dm-card-large .dm-card-label { font-size: 1.55rem; }
     .dm-card-small .dm-card-label { font-size: 1.2rem; }
     @media (max-width: 768px) {
-      .dm-row-large, .dm-row-small { grid-template-columns: 1fr 1fr; }
-      .dm-card-large, .dm-card-small { height: 200px; }
-      .dm-card-large .dm-card-label { font-size: 1.1rem; }
-      .dm-card-small .dm-card-label { font-size: 1.05rem; }
-      .dm-wrap { padding: 0 1rem 3rem; }
+      .dm-card-large, .dm-card-small { height: 185px; }
+      .dm-card-label { font-size: 1rem !important; bottom: 1rem; left: 1rem; }
+      .dm-wrap { padding: 0 0.75rem 2rem; }
+      .dm-grid { gap: 0.5rem; }
       .dm-services-title { font-size: 2rem; }
     }
 
@@ -1022,7 +1020,7 @@
     </div>
   </div>
   <div class="dm-wrap">
-    <div class="dm-row dm-row-large">
+    <div class="dm-grid">
       <div class="dm-card dm-card-large" onclick="openService('exterior')">
         <img src="https://images.pexels.com/photos/6197122/pexels-photo-6197122.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop" alt="Exterior Window Cleaning" loading="lazy" />
         <div class="dm-card-overlay"></div>
@@ -1033,8 +1031,6 @@
         <div class="dm-card-overlay"></div>
         <div class="dm-card-label">Interior Window Cleaning</div>
       </div>
-    </div>
-    <div class="dm-row dm-row-small">
       <div class="dm-card dm-card-small" onclick="openService('pressure')">
         <img src="https://images.pexels.com/photos/5652626/pexels-photo-5652626.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Pressure Washing" loading="lazy" />
         <div class="dm-card-overlay"></div>
@@ -1045,13 +1041,6 @@
         <div class="dm-card-overlay"></div>
         <div class="dm-card-label">Solar Panel Cleaning</div>
       </div>
-      <div class="dm-card dm-card-small" onclick="openService('holiday')">
-        <img src="https://images.pexels.com/photos/9333842/pexels-photo-9333842.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Holiday Light Installation" loading="lazy" />
-        <div class="dm-card-overlay"></div>
-        <div class="dm-card-label">Holiday Light Installation</div>
-      </div>
-    </div>
-    <div class="dm-row dm-row-small">
       <div class="dm-card dm-card-small" onclick="openService('screen')">
         <img src="https://images.pexels.com/photos/7937701/pexels-photo-7937701.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Screen Cleaning" loading="lazy" />
         <div class="dm-card-overlay"></div>
@@ -1067,8 +1056,6 @@
         <div class="dm-card-overlay"></div>
         <div class="dm-card-label">Soft Washing</div>
       </div>
-    </div>
-    <div class="dm-row dm-row-small">
       <div class="dm-card dm-card-small" onclick="openService('gutter')">
         <img src="https://images.pexels.com/photos/5997992/pexels-photo-5997992.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Gutter Cleaning" loading="lazy" />
         <div class="dm-card-overlay"></div>
@@ -1078,6 +1065,11 @@
         <img src="https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Commercial Cleaning" loading="lazy" />
         <div class="dm-card-overlay"></div>
         <div class="dm-card-label">Commercial Cleaning</div>
+      </div>
+      <div class="dm-card dm-card-small" onclick="openService('holiday')">
+        <img src="https://images.pexels.com/photos/9333842/pexels-photo-9333842.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Holiday Light Installation" loading="lazy" />
+        <div class="dm-card-overlay"></div>
+        <div class="dm-card-label">Holiday Light Installation</div>
       </div>
     </div>
   </div>
