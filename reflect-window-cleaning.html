@@ -759,10 +759,12 @@
     .dm-card-large .dm-card-label { font-size: 1.55rem; }
     .dm-card-small .dm-card-label { font-size: 1.2rem; }
     @media (max-width: 768px) {
-      .dm-row-large, .dm-row-small { grid-template-columns: 1fr; }
-      .dm-card-large { height: 300px; }
-      .dm-card-small { height: 220px; }
+      .dm-row-large, .dm-row-small { grid-template-columns: 1fr 1fr; }
+      .dm-card-large, .dm-card-small { height: 200px; }
+      .dm-card-large .dm-card-label { font-size: 1.1rem; }
+      .dm-card-small .dm-card-label { font-size: 1.05rem; }
       .dm-wrap { padding: 0 1rem 3rem; }
+      .dm-services-title { font-size: 2rem; }
     }
 
     /* ── MEMBERSHIP PRICING ──────────────────────────── */
@@ -1047,6 +1049,35 @@
         <img src="https://images.pexels.com/photos/9333842/pexels-photo-9333842.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Holiday Light Installation" loading="lazy" />
         <div class="dm-card-overlay"></div>
         <div class="dm-card-label">Holiday Light Installation</div>
+      </div>
+    </div>
+    <div class="dm-row dm-row-small">
+      <div class="dm-card dm-card-small" onclick="openService('screen')">
+        <img src="https://images.pexels.com/photos/7937701/pexels-photo-7937701.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Screen Cleaning" loading="lazy" />
+        <div class="dm-card-overlay"></div>
+        <div class="dm-card-label">Screen Cleaning</div>
+      </div>
+      <div class="dm-card dm-card-small" onclick="openService('track')">
+        <img src="https://images.pexels.com/photos/4108714/pexels-photo-4108714.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Track Detailing" loading="lazy" />
+        <div class="dm-card-overlay"></div>
+        <div class="dm-card-label">Track Detailing</div>
+      </div>
+      <div class="dm-card dm-card-small" onclick="openService('softwash')">
+        <img src="https://images.pexels.com/photos/5466320/pexels-photo-5466320.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Soft Washing" loading="lazy" />
+        <div class="dm-card-overlay"></div>
+        <div class="dm-card-label">Soft Washing</div>
+      </div>
+    </div>
+    <div class="dm-row dm-row-small">
+      <div class="dm-card dm-card-small" onclick="openService('gutter')">
+        <img src="https://images.pexels.com/photos/5997992/pexels-photo-5997992.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Gutter Cleaning" loading="lazy" />
+        <div class="dm-card-overlay"></div>
+        <div class="dm-card-label">Gutter Cleaning</div>
+      </div>
+      <div class="dm-card dm-card-small" onclick="openService('commercial')">
+        <img src="https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Commercial Cleaning" loading="lazy" />
+        <div class="dm-card-overlay"></div>
+        <div class="dm-card-label">Commercial Cleaning</div>
       </div>
     </div>
   </div>
@@ -1496,6 +1527,81 @@ const SVC = {
       <li><strong>Solar-Safe Equipment:</strong> We never use harsh chemicals or high pressure on panels.</li>
       <li><strong>Bundle &amp; Save:</strong> Book with window cleaning for a discounted combo rate.</li>
       <li><strong>Owner Supervised:</strong> Daniel is on every job to ensure panels are handled with care.</li>
+    </ul>`,
+    showProcess: false
+  },
+  screen: {
+    imgId: '7937701',
+    tag: 'Screen Cleaning',
+    title: 'Professional Screen Cleaning Services',
+    desc: 'Clogged, dusty screens block light and trap allergens. We deep-clean every screen so your view is clear and your air is fresh.',
+    h2: 'Screen Cleaning at Reflect',
+    body: `<p>Window screens collect dust, pollen, and grime that block natural light and reduce airflow. Reflect removes, hand-cleans, and reinstalls every screen — leaving them spotless and functioning perfectly.</p>
+    <h3>What's Included</h3>
+    <ul>
+      <li><strong>Full Removal &amp; Reinstall:</strong> We remove each screen, clean it thoroughly, and put it back.</li>
+      <li><strong>Deep Scrub:</strong> Each screen is brushed and rinsed to remove built-up grime.</li>
+      <li><strong>Frame Wipe-Down:</strong> Screen frames are wiped clean too.</li>
+    </ul>`,
+    showProcess: false
+  },
+  track: {
+    imgId: '4108714',
+    tag: 'Track Detailing',
+    title: 'Window Track & Sill Detailing',
+    desc: 'Dirty tracks and sills are breeding grounds for grime. We detail every track and sill to a spotless finish.',
+    h2: 'Track Detailing at Reflect',
+    body: `<p>Window tracks and sills collect debris, dead bugs, and oxidation that regular cleaning misses. Reflect's track detailing service goes deep — vacuuming, scrubbing, and wiping every channel and corner.</p>
+    <h3>What's Included</h3>
+    <ul>
+      <li><strong>Vacuum &amp; Debris Removal:</strong> Every track cleared of loose dirt and buildup.</li>
+      <li><strong>Scrub &amp; Wipe:</strong> Hand-scrubbed and wiped with microfiber cloths.</li>
+      <li><strong>Sill Detail:</strong> Window sills cleaned inside and out.</li>
+    </ul>`,
+    showProcess: false
+  },
+  softwash: {
+    imgId: '5466320',
+    tag: 'Soft Washing',
+    title: 'Professional Soft Washing Services',
+    desc: 'Low-pressure, high-results exterior cleaning that eliminates algae, mold, and stains without damaging your home.',
+    h2: 'Soft Washing at Reflect',
+    body: `<p>Unlike pressure washing, soft washing uses low pressure and professional-grade solutions to safely clean your roof, siding, and exterior surfaces — killing organic growth at the root.</p>
+    <h3>What We Clean</h3>
+    <ul>
+      <li><strong>Roofs &amp; Shingles:</strong> Safe for all roof types — no damage, no leaks.</li>
+      <li><strong>Stucco &amp; Siding:</strong> Removes algae, mold, and discoloration.</li>
+      <li><strong>Driveways &amp; Walkways:</strong> Deep-cleans without surface damage.</li>
+    </ul>`,
+    showProcess: false
+  },
+  gutter: {
+    imgId: '5997992',
+    tag: 'Gutter Cleaning',
+    title: 'Professional Gutter Cleaning Services',
+    desc: 'Clogged gutters cause water damage and foundation issues. We clear them out completely so your home stays protected.',
+    h2: 'Gutter Cleaning at Reflect',
+    body: `<p>Blocked gutters are one of the leading causes of water damage to Arizona homes. Reflect clears every gutter and downspout by hand, then flushes them out to ensure proper drainage.</p>
+    <h3>What's Included</h3>
+    <ul>
+      <li><strong>Full Debris Removal:</strong> Leaves, dirt, and buildup removed by hand.</li>
+      <li><strong>Downspout Flush:</strong> Every downspout cleared and flowing freely.</li>
+      <li><strong>Visual Inspection:</strong> We flag any damage or issues we spot along the way.</li>
+    </ul>`,
+    showProcess: false
+  },
+  commercial: {
+    imgId: '1170412',
+    tag: 'Commercial Cleaning',
+    title: 'Commercial Window Cleaning Services',
+    desc: 'First impressions matter. We keep your storefront, office, and commercial property looking sharp and professional.',
+    h2: 'Commercial Cleaning at Reflect',
+    body: `<p>Reflect serves Scottsdale businesses with the same attention to detail we bring to every home. Clean windows mean better curb appeal, more foot traffic, and a professional image that customers notice.</p>
+    <h3>What We Offer</h3>
+    <ul>
+      <li><strong>Storefronts &amp; Retail:</strong> Interior and exterior glass cleaned to streak-free perfection.</li>
+      <li><strong>Office Buildings:</strong> Scheduled service so your building always looks its best.</li>
+      <li><strong>Custom Schedules:</strong> Weekly, monthly, or as-needed — we work around your hours.</li>
     </ul>`,
     showProcess: false
   },
