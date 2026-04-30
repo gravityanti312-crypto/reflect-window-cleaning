@@ -901,6 +901,12 @@
     .qb-det-row:last-child { border-bottom: none; }
     .qb-det-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; color: #9ca3af; text-transform: uppercase; margin-bottom: 4px; }
     .qb-det-val { font-size: 0.92rem; font-weight: 600; color: #5d4fff; }
+    .qb-pane-estimate { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; display: none; }
+    .qb-pane-text { font-size: 1.05rem; font-weight: 700; color: #0f2544; margin-bottom: 1.1rem; line-height: 1.55; }
+    .qb-pane-btns { display: flex; gap: 0.75rem; }
+    .qb-pane-btn { background: white; border: 1.5px solid #d1d5db; color: #374151; padding: 0.65rem 1.75rem; border-radius: 10px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+    .qb-pane-btn:hover { border-color: #5d4fff; }
+    .qb-pane-btn.selected { border-color: #5d4fff; background: rgba(93,79,255,0.05); color: #5d4fff; }
     .qb-footer {
       background: white; border-top: 1px solid #e5e7eb;
       padding: 0.9rem 2rem; display: flex; justify-content: space-between;
@@ -1661,7 +1667,30 @@ document.addEventListener('keydown', function(e) {
     qbData[field] = val;
     var sid = qbSidebarMap[field];
     if (sid) { var el2 = document.getElementById(sid); if (el2) el2.textContent = val; }
+    if (field === 'propertySize') {
+      var paneMap = {
+        '0 - 2,499 sq ft': '0 – 20',
+        '2,500 - 3,499 sq ft': '21 – 40',
+        '3,500 - 4,999 sq ft': '41 – 60',
+        '5,000 - 6,499 sq ft': '61 – 80',
+        '6,500 - 7,999 sq ft': '81 – 99',
+        '8,000+ sq ft': '100+'
+      };
+      var est = document.getElementById('qb-pane-estimate');
+      var cnt = document.getElementById('qb-pane-count');
+      if (est && cnt) {
+        cnt.textContent = paneMap[val] || '';
+        est.style.display = 'block';
+        est.querySelectorAll('.qb-pane-btn').forEach(function(b) { b.classList.remove('selected'); });
+        est.querySelectorAll('.qb-pane-btn')[0].classList.add('selected');
+      }
+    }
     updateQbNext();
+  }
+
+  function qbPaneConfirm(btn) {
+    btn.closest('.qb-pane-btns').querySelectorAll('.qb-pane-btn').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
   }
 
   function qbNext() {
@@ -1818,6 +1847,13 @@ document.addEventListener('keydown', function(e) {
           <div class="qb-size-card" data-field="propertySize" data-value="5,000 - 6,499 sq ft" onclick="qbSelect(this)">5,000 – 6,499 sq ft</div>
           <div class="qb-size-card" data-field="propertySize" data-value="6,500 - 7,999 sq ft" onclick="qbSelect(this)">6,500 – 7,999 sq ft</div>
           <div class="qb-size-card" data-field="propertySize" data-value="8,000+ sq ft" onclick="qbSelect(this)">8,000+ sq ft</div>
+        </div>
+        <div class="qb-pane-estimate" id="qb-pane-estimate">
+          <p class="qb-pane-text">Based on your answers, we estimate you have <strong id="qb-pane-count"></strong> panes. Is this correct?</p>
+          <div class="qb-pane-btns">
+            <button class="qb-pane-btn selected" onclick="qbPaneConfirm(this)">Yes</button>
+            <button class="qb-pane-btn" onclick="qbPaneConfirm(this)">No</button>
+          </div>
         </div>
       </div>
 
