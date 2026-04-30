@@ -1645,7 +1645,7 @@ document.addEventListener('keydown', function(e) {
     if (footer) footer.style.display = '';
     if (prev) prev.classList.toggle('hidden', n === 1);
     if (next) {
-      if (n === 5) { next.textContent = 'Request Quote →'; next.disabled = false; }
+      if (n === 5) { next.textContent = 'Request Quote →'; updateQbFormBtn(); }
       else { next.textContent = 'Continue →'; updateQbNext(); }
     }
   }
@@ -1656,6 +1656,17 @@ document.addEventListener('keydown', function(e) {
     var fields = { 1: 'propertyType', 2: 'lastCleaned', 3: 'frenchPanes', 4: 'propertySize' };
     var f = fields[qbStep];
     next.disabled = f ? !qbData[f] : false;
+  }
+
+  function updateQbFormBtn() {
+    var next = document.getElementById('qb-next');
+    if (!next) return;
+    var form = document.getElementById('qbForm');
+    if (!form) return;
+    var inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+    var allFilled = true;
+    inputs.forEach(function(inp) { if (!inp.value.trim()) allFilled = false; });
+    next.disabled = !allFilled;
   }
 
   function qbSelect(el) {
@@ -1704,6 +1715,20 @@ document.addEventListener('keydown', function(e) {
 
   function submitQbForm(e) {
     if (e) e.preventDefault();
+    var form = document.getElementById('qbForm');
+    var inputs = form ? form.querySelectorAll('input[required], select[required], textarea[required]') : [];
+    var valid = true;
+    inputs.forEach(function(inp) {
+      if (!inp.value.trim()) {
+        inp.style.borderColor = '#ef4444';
+        inp.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.12)';
+        valid = false;
+      } else {
+        inp.style.borderColor = '';
+        inp.style.boxShadow = '';
+      }
+    });
+    if (!valid) return;
     document.querySelectorAll('.qb-step').forEach(function(s) { s.classList.remove('active'); });
     var suc = document.getElementById('qb-step-success');
     if (suc) suc.classList.add('active');
@@ -1712,6 +1737,10 @@ document.addEventListener('keydown', function(e) {
   }
 
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeQuoteModal(); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('qbForm');
+    if (form) form.addEventListener('input', function() { if (qbStep === 5) updateQbFormBtn(); });
+  });
 </script>
 
 
