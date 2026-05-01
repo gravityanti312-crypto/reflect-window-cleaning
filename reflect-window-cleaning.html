@@ -467,10 +467,18 @@
         grid-template-columns: unset;
       }
       .reviews-grid::-webkit-scrollbar { display: none; }
+      .reviews-grid { align-items: flex-start; }
       .review-card-block {
         min-width: 82%;
         scroll-snap-align: start;
         flex-shrink: 0;
+        height: auto;
+        align-self: stretch;
+      }
+      .rc-text {
+        white-space: normal;
+        overflow: visible;
+        display: block;
       }
       .reviews-nav {
         display: flex; justify-content: center; gap: 0.75rem; margin-top: 1rem;
