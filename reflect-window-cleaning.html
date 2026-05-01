@@ -467,17 +467,20 @@
         grid-template-columns: unset;
       }
       .reviews-grid::-webkit-scrollbar { display: none; }
-      .reviews-grid { align-items: flex-start; }
+      .reviews-grid { align-items: stretch; }
       .review-card-block {
-        min-width: 82%;
+        width: 82vw;
+        min-width: 82vw;
+        max-width: 82vw;
         scroll-snap-align: start;
         flex-shrink: 0;
-        height: auto;
-        align-self: stretch;
+        box-sizing: border-box;
+        overflow: hidden;
       }
       .rc-text {
-        white-space: normal;
-        overflow: visible;
+        white-space: normal !important;
+        word-break: break-word;
+        overflow-wrap: break-word;
         display: block;
       }
       .reviews-nav {
