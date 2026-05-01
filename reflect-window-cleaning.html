@@ -453,6 +453,36 @@
 
     /* ── REVIEWS ──────────────────────────────────────── */
     #reviews { background: var(--off-white); }
+    .reviews-carousel-wrap { position: relative; }
+    .reviews-nav { display: none; }
+    @media (max-width: 768px) {
+      .reviews-grid {
+        display: flex !important;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding: 0.25rem 1rem 1.25rem;
+        scrollbar-width: none;
+        grid-template-columns: unset;
+      }
+      .reviews-grid::-webkit-scrollbar { display: none; }
+      .review-card-block {
+        min-width: 82%;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+      .reviews-nav {
+        display: flex; justify-content: center; gap: 0.75rem; margin-top: 1rem;
+      }
+      .reviews-nav button {
+        width: 44px; height: 44px; border-radius: 50%;
+        border: 1.5px solid var(--border); background: white;
+        font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        color: var(--slate); transition: background 0.15s, border-color 0.15s;
+      }
+      .reviews-nav button:hover { background: #ede9ff; border-color: var(--purple); }
+    }
     .reviews-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -1134,7 +1164,8 @@
       <h2 class="section-title">What Scottsdale <span>Homeowners Say</span></h2>
       <p class="section-sub">Real reviews from real neighbors. See why Reflect is the most trusted window cleaning name in the valley.</p>
     </div>
-    <div class="reviews-grid">
+    <div class="reviews-carousel-wrap">
+    <div class="reviews-grid" id="reviewsGrid">
       <a class="review-card-block" href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener">
         <div class="rc-stars">★★★★★</div>
         <p class="rc-text">"Reflect window cleaning was AMAZING! Best job I have ever seen done. The windows are SPARKLING and completely streak-free. Will definitely be using them again!"</p>
@@ -1183,7 +1214,12 @@
           <div><div class="rc-name">Carol &amp; Dave P.</div><div class="rc-meta">Scottsdale · Google Review</div></div>
         </div>
       </a>
+    </div><!-- end reviews-grid -->
+    <div class="reviews-nav">
+      <button onclick="scrollReviews(-1)" aria-label="Previous">&#8592;</button>
+      <button onclick="scrollReviews(1)" aria-label="Next">&#8594;</button>
     </div>
+    </div><!-- end carousel-wrap -->
     <div style="text-align:center;margin-top:1.5rem;">
       <a href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener" class="btn-nav" style="display:inline-block;">⭐ Leave Us a Google Review</a>
     </div>
@@ -1836,6 +1872,13 @@ document.addEventListener('keydown', function(e) {
   }
 
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeQuoteModal(); });
+  function scrollReviews(dir) {
+    var grid = document.getElementById('reviewsGrid');
+    if (!grid) return;
+    var card = grid.querySelector('.review-card-block');
+    var w = card ? card.offsetWidth + 16 : 280;
+    grid.scrollBy({ left: dir * w, behavior: 'smooth' });
+  }
   document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('qbForm');
     if (form) form.addEventListener('input', function() { if (qbStep === 5) updateQbFormBtn(); });
