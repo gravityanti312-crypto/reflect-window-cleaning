@@ -313,14 +313,14 @@
       .strip-item { height: 240px; }
     }
     @media (max-width: 900px) {
-      #process { background: #5b7d90; }
-      #process .section-tag { color: #5ee6c0; }
+      #process { background: var(--slate); }
+      #process .section-tag { color: #c4b5fd; }
       #process .section-title { color: white !important; text-transform: uppercase; }
-      #process .section-title span { color: #5ee6c0 !important; -webkit-text-fill-color: #5ee6c0; }
-      #process .section-sub { color: rgba(255,255,255,0.8); }
+      #process .section-title span { color: #7dd3fc !important; -webkit-text-fill-color: #7dd3fc; }
+      #process .section-sub { color: rgba(255,255,255,0.7); }
       #process .process-grid { grid-template-columns: 1fr; gap: 1rem; }
       #process .process-card {
-        background: rgba(255,255,255,0.1); border-color: transparent;
+        background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.1);
         border-radius: 20px; text-align: center; box-shadow: none;
       }
       #process .process-card:hover { transform: none; box-shadow: none; }
@@ -329,19 +329,20 @@
       #process .process-card-body { padding: 2rem 1.5rem; }
       #process .process-num {
         font-size: 1.6rem; font-weight: 900;
-        background: #5ee6c0;
+        background: linear-gradient(135deg, var(--blue), var(--purple));
         -webkit-background-clip: unset; background-clip: unset;
-        -webkit-text-fill-color: #1a3a4a; color: #1a3a4a;
+        -webkit-text-fill-color: white; color: white;
         width: 76px; height: 76px; border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
         margin: 0 auto 1.25rem; line-height: 1;
+        box-shadow: 0 4px 16px rgba(93,79,255,0.4);
       }
       #process .process-icon { display: none; }
       #process .process-card h3 {
-        color: #5ee6c0; text-transform: uppercase;
+        color: #c4b5fd; text-transform: uppercase;
         letter-spacing: 2px; font-size: 1.1rem; text-align: center;
       }
-      #process .process-card p { color: rgba(255,255,255,0.9); text-align: center; }
+      #process .process-card p { color: rgba(255,255,255,0.85); text-align: center; }
     }
 
     /* ── PROCESS ──────────────────────────────────────── */
