@@ -313,17 +313,11 @@
       .strip-item { height: 240px; }
     }
     @media (max-width: 900px) {
-      #process { background: var(--slate) !important; }
-      #process .section-tag { color: #c4b5fd !important; }
-      #process .section-title { color: white !important; text-transform: uppercase; }
-      #process .section-title span { color: #7dd3fc !important; -webkit-text-fill-color: #7dd3fc !important; }
-      #process .section-sub { color: rgba(255,255,255,0.75) !important; }
       #process .process-grid { grid-template-columns: 1fr; gap: 1rem; }
       #process .process-card {
-        background: rgba(255,255,255,0.07) !important; border-color: rgba(255,255,255,0.1) !important;
-        border-radius: 20px; text-align: center; box-shadow: none !important;
+        background: white; border-color: var(--border);
+        border-radius: 20px; text-align: center;
       }
-      #process .process-card:hover { transform: none; box-shadow: none !important; }
       #process .process-card::before { display: none; }
       #process .process-card-img { display: none; }
       #process .process-card-body { padding: 2rem 1.5rem; }
@@ -335,14 +329,14 @@
         width: 76px; height: 76px; border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
         margin: 0 auto 1.25rem; line-height: 1;
-        box-shadow: 0 4px 16px rgba(93,79,255,0.4);
+        box-shadow: 0 4px 16px rgba(93,79,255,0.3);
       }
       #process .process-icon { display: none; }
       #process .process-card h3 {
-        color: #c4b5fd !important; text-transform: uppercase;
+        color: var(--slate) !important; text-transform: uppercase;
         letter-spacing: 2px; font-size: 1.1rem; text-align: center;
       }
-      #process .process-card p { color: rgba(255,255,255,0.9) !important; text-align: center; }
+      #process .process-card p { color: var(--slate-mid) !important; text-align: center; }
     }
 
     /* ── PROCESS ──────────────────────────────────────── */
