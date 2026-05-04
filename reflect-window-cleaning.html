@@ -516,7 +516,9 @@
     }
     .svc-reviews-grid::-webkit-scrollbar { display: none; }
     .svc-reviews-grid .review-card-block {
-      min-width: calc(33.333% - 0.85rem);
+      flex: 0 0 calc(33.333% - 0.84rem);
+      width: calc(33.333% - 0.84rem);
+      max-width: calc(33.333% - 0.84rem);
       scroll-snap-align: start;
       flex-shrink: 0;
       background: rgba(255,255,255,0.08);
