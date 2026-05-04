@@ -504,25 +504,38 @@
     .svc-rating-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; padding: 0.5rem 1.25rem; margin-bottom: 0; }
     .svc-rating-stars { color: #fbbf24; font-size: 1.1rem; letter-spacing: 2px; }
     .svc-rating-text { color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 600; }
+    .svc-reviews-wrap { position: relative; }
     .svc-reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
       gap: 1.25rem;
+      scrollbar-width: none;
+      padding-bottom: 0.5rem;
     }
+    .svc-reviews-grid::-webkit-scrollbar { display: none; }
     .svc-reviews-grid .review-card-block {
+      min-width: calc(33.333% - 0.85rem);
+      scroll-snap-align: start;
+      flex-shrink: 0;
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 20px;
       padding: 1.75rem;
+      box-sizing: border-box;
+      transform: none !important;
     }
     .svc-reviews-grid .rc-stars { color: #fbbf24; font-size: 1rem; margin-bottom: 0.75rem; }
-    .svc-reviews-grid .rc-text { color: rgba(255,255,255,0.88); font-style: italic; font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.1rem; }
+    .svc-reviews-grid .rc-text { color: rgba(255,255,255,0.88); font-style: italic; font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.1rem; white-space: normal; word-break: break-word; }
     .svc-reviews-grid .rc-name { color: white; font-weight: 700; font-size: 0.85rem; }
     .svc-reviews-grid .rc-meta { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
     .svc-reviews-grid .rc-avatar { background: linear-gradient(135deg, var(--blue), var(--purple)); }
-    .svc-reviews-grid:hover .review-card-block { transform: none; }
+    .svc-reviews-nav { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; }
+    .svc-reviews-nav button { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
+    .svc-reviews-nav button:hover { background: rgba(255,255,255,0.2); }
     @media (max-width: 768px) {
-      .svc-reviews-grid { grid-template-columns: 1fr; }
+      .svc-reviews-grid .review-card-block { min-width: 82vw; }
       .svc-reviews-section { padding: 2.5rem 0; }
       .svc-reviews-header h2 { font-size: 1.6rem; }
     }
@@ -1527,10 +1540,19 @@
           <span class="svc-rating-text">5.0 Stars on Google</span>
         </div>
       </div>
-      <div class="svc-reviews-grid">
-        <a class="review-card-block" href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener"><div class="rc-stars">★★★★★</div><p class="rc-text">"Reflect was AMAZING! Best job I have ever seen. The windows are SPARKLING and completely streak-free. Will definitely be using them again!"</p><div class="rc-author"><div class="rc-avatar">A</div><div><div class="rc-name">Ashley R.</div><div class="rc-meta">North Scottsdale · Google Review</div></div></div></a>
-        <a class="review-card-block" href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener"><div class="rc-stars">★★★★★</div><p class="rc-text">"OUTSTANDING JOB!! Squeaky clean and streak-free. Daniel was on time, professional, and went above and beyond on the tracks and sills. Highly recommend."</p><div class="rc-author"><div class="rc-avatar">M</div><div><div class="rc-name">Michael T.</div><div class="rc-meta">Scottsdale · Google Review</div></div></div></a>
-        <a class="review-card-block" href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener"><div class="rc-stars">★★★★★</div><p class="rc-text">"Fast, friendly, well-priced, and my windows were PERFECT. I've tried three other companies in Scottsdale and Reflect is by far the best."</p><div class="rc-author"><div class="rc-avatar">J</div><div><div class="rc-name">Jennifer L.</div><div class="rc-meta">Scottsdale · Google Review</div></div></div></a>
+      <div class="svc-reviews-wrap">
+        <div class="svc-reviews-grid" id="svcReviewsGrid">
+          <a class="review-card-block" href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener"><div class="rc-stars">★★★★★</div><p class="rc-text">"Reflect was AMAZING! Best job I have ever seen. The windows are SPARKLING and completely streak-free. Will definitely be using them again!"</p><div class="rc-author"><div class="rc-avatar">A</div><div><div class="rc-name">Ashley R.</div><div class="rc-meta">North Scottsdale · Google Review</div></div></div></a>
+          <a class="review-card-block" href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener"><div class="rc-stars">★★★★★</div><p class="rc-text">"OUTSTANDING JOB!! Squeaky clean and streak-free. Daniel was on time, professional, and went above and beyond on the tracks and sills. Highly recommend."</p><div class="rc-author"><div class="rc-avatar">M</div><div><div class="rc-name">Michael T.</div><div class="rc-meta">Scottsdale · Google Review</div></div></div></a>
+          <a class="review-card-block" href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener"><div class="rc-stars">★★★★★</div><p class="rc-text">"Fast, friendly, well-priced, and my windows were PERFECT. I've tried three other companies in Scottsdale and Reflect is by far the best."</p><div class="rc-author"><div class="rc-avatar">J</div><div><div class="rc-name">Jennifer L.</div><div class="rc-meta">Scottsdale · Google Review</div></div></div></a>
+          <a class="review-card-block" href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener"><div class="rc-stars">★★★★★</div><p class="rc-text">"Hired Reflect for our solar panels and windows before we listed our home. The place looked brand new. Buyers complimented the windows at the showing. Worth every penny."</p><div class="rc-author"><div class="rc-avatar">S</div><div><div class="rc-name">Sandra K.</div><div class="rc-meta">Paradise Valley · Google Review</div></div></div></a>
+          <a class="review-card-block" href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener"><div class="rc-stars">★★★★★</div><p class="rc-text">"I appreciate that Daniel actually shows up himself and takes pride in his work. You can tell the difference between someone who cares and someone who doesn't. He cares."</p><div class="rc-author"><div class="rc-avatar">R</div><div><div class="rc-name">Robert H.</div><div class="rc-meta">North Scottsdale · Google Review</div></div></div></a>
+          <a class="review-card-block" href="https://www.google.com/maps/place/Reflect+Window+Cleaning/@33.6163339,-111.8470485,17z/data=!4m8!3m7!1s0x8c6609db47daddd9:0xa42e05efdd5638f!8m2!3d33.6163295!4d-111.8444736!9m1!1b1!16s%2Fg%2F11y3_3fqx5?entry=ttu" target="_blank" rel="noopener"><div class="rc-stars">★★★★★</div><p class="rc-text">"Had Reflect do our pressure washing and windows same day. Absolutely incredible — the house looked like it just came off the lot. Will be using them every season."</p><div class="rc-author"><div class="rc-avatar">C</div><div><div class="rc-name">Carol &amp; Dave P.</div><div class="rc-meta">Scottsdale · Google Review</div></div></div></a>
+        </div>
+        <div class="svc-reviews-nav">
+          <button onclick="scrollSvcReviews(-1)">&#8592;</button>
+          <button onclick="scrollSvcReviews(1)">&#8594;</button>
+        </div>
       </div>
     </div>
   </section>
@@ -1963,6 +1985,13 @@ document.addEventListener('keydown', function(e) {
   }
 
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeQuoteModal(); });
+  function scrollSvcReviews(dir) {
+    var grid = document.getElementById('svcReviewsGrid');
+    if (!grid) return;
+    var card = grid.querySelector('.review-card-block');
+    var w = card ? card.offsetWidth + 20 : 300;
+    grid.scrollBy({ left: dir * w, behavior: 'smooth' });
+  }
   function scrollReviews(dir) {
     var grid = document.getElementById('reviewsGrid');
     if (!grid) return;
