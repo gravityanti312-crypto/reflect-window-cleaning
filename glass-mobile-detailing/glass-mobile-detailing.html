@@ -2013,6 +2013,27 @@
     <a href="javascript:void(0)" class="btn-cyan" onclick="openQuoteModal()" style="font-size: 16px; padding: 16px 36px;">Book Now — It's Fast &amp; Free</a>
   </div>
 </section>
+<section class="ig-showroom" id="ig-showroom">
+  <div class="container">
+    <div class="ig-showroom-inner">
+      <div class="ig-showroom-text">
+        <div class="ig-showroom-eyebrow">@glassdetailingaz</div>
+        <h2 class="ig-showroom-title">Check Out the Instagram</h2>
+        <p class="ig-showroom-sub">Showroom finishes, every single day. See the latest details on Instagram.</p>
+        <a href="https://www.instagram.com/glassdetailingaz/" target="_blank" rel="noopener" class="btn-cyan ig-showroom-btn">Follow on Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .ig-showroom { display: none; padding: 80px 0; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-top: 1px solid rgba(255,255,255,0.06); }
+  @media (min-width: 769px) { .ig-showroom { display: block; } }
+  .ig-showroom-inner { text-align: center; max-width: 720px; margin: 0 auto; }
+  .ig-showroom-eyebrow { color: #22d3ee; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 13px; margin-bottom: 14px; }
+  .ig-showroom-title { color: #fff; font-size: 42px; font-weight: 800; margin: 0 0 14px; letter-spacing: -0.5px; }
+  .ig-showroom-sub { color: #cbd5e1; font-size: 18px; margin: 0 0 28px; }
+  .ig-showroom-btn { font-size: 16px; padding: 16px 36px; }
+</style>
 <footer id="footer">
   <div class="container">
     <div class="footer-grid">
@@ -2564,7 +2585,7 @@ function closeService() {
   }
 
 
-  /* ── Review Auto-Slider ── */
+  /* ── Review Auto-Slider + Mobile Swipe ── */
   (function() {
     var slider = document.getElementById('reviewSlider');
     if (!slider) return;
@@ -2573,15 +2594,60 @@ function closeService() {
     var current = 0;
     var max = total - perView;
 
-    function slideReviews() {
-      current = current >= max ? 0 : current + 1;
-      var cardW = slider.children[0].offsetWidth + 16;
-      slider.style.transform = 'translateX(-' + (current * cardW) + 'px)';
+    function getCardW() {
+      return slider.children[0].offsetWidth + 16;
     }
 
-    window._revTimer = setInterval(slideReviews, 5000);
-    slider.addEventListener('mouseenter', function() { clearInterval(window._revTimer); });
-    slider.addEventListener('mouseleave', function() { window._revTimer = setInterval(slideReviews, 5000); });
+    function goTo(index) {
+      current = Math.max(0, Math.min(index, max));
+      slider.style.transition = 'transform 0.5s ease';
+      slider.style.transform = 'translateX(-' + (current * getCardW()) + 'px)';
+    }
+
+    function slideReviews() {
+      goTo(current >= max ? 0 : current + 1);
+    }
+
+    function startTimer() { window._revTimer = setInterval(slideReviews, 5000); }
+    function stopTimer() { clearInterval(window._revTimer); }
+
+    startTimer();
+
+    // Pause on hover (desktop)
+    slider.addEventListener('mouseenter', stopTimer);
+    slider.addEventListener('mouseleave', startTimer);
+
+    // Touch swipe (mobile)
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var isDragging = false;
+
+    slider.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isDragging = false;
+      stopTimer();
+    }, { passive: true });
+
+    slider.addEventListener('touchmove', function(e) {
+      var dx = e.touches[0].clientX - touchStartX;
+      var dy = e.touches[0].clientY - touchStartY;
+      if (!isDragging && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
+        isDragging = true;
+      }
+    }, { passive: true });
+
+    slider.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      if (isDragging) {
+        if (dx < -40) {
+          goTo(current + 1);
+        } else if (dx > 40) {
+          goTo(current - 1);
+        }
+      }
+      setTimeout(startTimer, 1000);
+    }, { passive: true });
   })();
 
 </script>
@@ -2602,24 +2668,26 @@ function closeService() {
   #nav { padding: 10px 16px; }
 
   .nav-inner {
-    height: 64px;
-    padding: 0 14px 0 16px;
-    border-radius: 14px;
+    height: 84px;
+    padding: 0 16px;
+    border-radius: 16px;
     gap: 0;
+    justify-content: space-between;
   }
 
-  .nav-logo img { height: 46px; }
+  .nav-logo img { height: 74px; }
+
+  .nav-right { margin-left: auto; }
 
   .hamburger {
     display: flex;
-    margin-left: auto;
-    padding: 8px;
-    gap: 5px;
+    padding: 10px;
+    gap: 6px;
   }
 
   .hamburger span {
-    width: 22px;
-    height: 2px;
+    width: 25px;
+    height: 2.5px;
     background: #0f172a;
     border-radius: 2px;
     transition: all 0.3s;
@@ -2986,6 +3054,82 @@ function closeService() {
   .nav-logo img { height: 40px; }
   .qb-cards { grid-template-columns: 1fr !important; }
   .svc-card-img { width: 66px; height: 66px; }
+}
+</style>
+
+<style>
+/* ── MOBILE FIXES: service card images + Why Choose Glass grid ── */
+@media (max-width: 768px) {
+
+  /* Fix oversized service card images (especially ceramic coating product shot) */
+  .svc-card-img {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 0 !important;
+    align-self: center !important;
+  }
+
+  /* Keep service cards as proper rows */
+  .service-card {
+    display: grid !important;
+    grid-template-columns: auto 1fr auto !important;
+    grid-template-rows: auto auto !important;
+    align-items: center !important;
+    padding: 16px 14px !important;
+    gap: 0 12px !important;
+    text-align: left !important;
+  }
+
+  .svc-card-tag { grid-column: 1; grid-row: 1; font-size: 0.58rem !important; }
+  .svc-card-title { grid-column: 1; grid-row: 2; font-size: 1rem !important; margin-bottom: 0 !important; }
+  .svc-card-img { grid-column: 2; grid-row: 1 / 3; }
+  .svc-card-features { grid-column: 3; grid-row: 1 / 3; margin-bottom: 0 !important; }
+  .svc-card-btn { display: none !important; }
+
+  /* Add a tap indicator instead */
+  .service-card::after {
+    content: 'LEARN MORE';
+    display: none;
+  }
+
+  /* Fix Why Choose Glass — override inline style grid */
+  #why > .container > div[style*="grid-template-columns"] {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    overflow: visible !important;
+  }
+
+  #why > .container > div[style*="grid-template-columns"] > div {
+    padding: 16px 12px !important;
+    border-radius: 12px !important;
+  }
+
+  #why > .container > div[style*="grid-template-columns"] > div svg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  #why > .container > div[style*="grid-template-columns"] > div > div:first-child {
+    margin-bottom: 8px !important;
+  }
+
+  #why > .container > div[style*="grid-template-columns"] > div > div:nth-child(2) {
+    font-size: 0.82rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  #why > .container > div[style*="grid-template-columns"] > div > p {
+    font-size: 0.73rem !important;
+    line-height: 1.5 !important;
+  }
+
+  #why > .container > div:first-child h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+  }
 }
 </style>
 
